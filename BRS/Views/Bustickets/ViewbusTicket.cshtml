@@ -1,0 +1,71 @@
+﻿@model List<BRS.Models.BusInfo>
+@{
+    ViewBag.Title = "ViewbusTicket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/data%20table.bootstrap.css" rel="stylesheet" />
+@*View All Bus Name*@><div class="login-form  center-block" style="margin-top:200px">
+    <h3 class="text-center text-content" id="demoGrid"> View busTicket</h3>
+    <table class="table table-bordered table-striped table-bordered dt-responsive nowrap text-contents " id="dataTable">
+        <thead>
+            <tr>
+                <th class="text-center table-style ">BUS INFO</th>
+                <th class="text-center table-style text-contents">Departure Time</th>
+                <th class="text-center table-style ">Arrival Time</th>
+
+                <th class="text-center table-style">  available seat</th>
+                <th class="text-center table-style ">Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var data in Model)
+                {
+                    <tr class="text-center">
+                        <td>
+                            <span class="text-info"> @data.busName </span><br />
+                            <span>Bus Code :</span><span class="text-info">@data.busCode</span>  <br />
+                            <span> Start Point :</span><span class="text-info"> @data.sourceStation </span><br />
+                            <span> End Point :</span><span class="text-info">@data.desStation</span>
+                        </td>
+                        <td style="padding-top:30px"> <span> Departure Time :</span><span class="text-info"> @data.sTime </span></td>
+                        <td style="padding-top:30px">
+                            <span> Arrival Time :</span><span class="text-info">@data.ETime</span>
+                        </td>
+                        <td style="padding-top:30px">@data.availSeat</td>
+                        <td></td>
+                        <td style="padding-top:20px"><button type="submit" class="btn btn-info">View Seats</button></td>
+
+
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+@Scripts.Render("~/bundles/bootstrap")
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@section scripts
+{
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "pagingType": "full_numbers"
+            });
+        });
+
+    </script>
+}

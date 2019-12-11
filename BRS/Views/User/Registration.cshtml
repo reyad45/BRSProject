@@ -1,0 +1,45 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using System.Web.Mvc.Html
+@model BRS.Models.Userlogin
+
+@{
+    ViewBag.Title = "User Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="headingStyle">
+    <span class="top right"></span>
+    <span class="top left"></span>
+    <h2>Add Bus Schedule</h2>
+    <h2 class="text-center"><label class="label label-success">@ViewBag.Message</label></h2>
+    <hr />
+    <span class="bottom right"></span>
+    <span class="bottom left"></span>
+</div>
+
+
+@using (Html.BeginForm("Registration", "User", FormMethod.Post, new { @class = "form-horizontal , Bus-form-width", role = "form" }))
+{
+    <div class="login-form">
+
+        <div class="row form-group">
+
+            <div class="col-md-10">
+                @Html.LabelFor(a => a.id)
+
+                @Html.DropDownListFor(a => a.id, new SelectList(ViewBag.GetRole, "Id", "UserRole"), "---Select----", new { @class = "form-control" })
+           
+            </div>
+            <div class="col-md-2">
+
+
+                @Html.LabelFor(a=>a.userName)
+                @Html.TextBoxFor(a => a.userName, new  { @class="form-control", @placeholder="Bus No"})
+
+
+            </div>
+        </div>
+        </div>
+}
+

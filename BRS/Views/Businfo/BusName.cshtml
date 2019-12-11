@@ -1,0 +1,46 @@
+﻿@model BRS.Models.BusInfo
+
+@{
+    ViewBag.Title = "BusName";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+
+@using (Html.BeginForm("BusName", "Businfo", FormMethod.Post, new { @class = "form-horizontal , Bus-form-width", role = "form" }))
+{
+
+
+    <div class="login-form" style="margin-top:200px">
+        <h2 class="text-center text-uppercase font-weight-bold ">Add Bus Name</h2>
+        <h2 class="text-center"><label class="label label-success">@ViewBag.Message</label></h2>
+        <hr />
+        <div class="row form-group">
+
+            <div class="col-md-8">
+                @Html.LabelFor(a => a.busName)
+                @Html.TextBoxFor(a => a.busName, new
+           {
+               @class = "form-control", @*, @readonly = "readonly"*@   @placeholder = "Bus Name"
+           })
+                @Html.ValidationMessageFor(a => a.busName)
+            </div>
+            <div class="col-md-2">
+
+                @Html.LabelFor(a => a.busCode)
+
+                @Html.TextBoxFor(a => a.busCode, new { @class = "form-control", @placeholder = "Bus Code" })
+                @Html.ValidationMessageFor(a => a.busCode)
+
+            </div>
+            <div class="col-md-2">
+                <label></label>
+                <input type="submit" value="Save " class="btn btn-primary btn-block" />
+            </div>
+        </div>
+
+
+
+    </div>
+}

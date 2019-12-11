@@ -1,0 +1,59 @@
+﻿@model BRS.Models.BusInfo
+
+@{
+    ViewBag.Title = "Bus Nmae";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+
+@using (Html.BeginForm("BusName", "Businfo", FormMethod.Post, new { @class = "form-horizontal ", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="login-form col-md-12">
+        <h2 class="text-left ">Add Bus Name</h2>
+        <h2 class="text-center"><label class="label label-success">@ViewBag.Message</label></h2>
+        <hr />
+
+        <div class="row form-group">
+            <div class="col-md-8">
+
+                @Html.LabelFor(a => a.busName)
+
+
+                @Html.TextBoxFor(a => a.busName, new { @class = "form-control", @placeholder = "Bus Name" })
+                @Html.ValidationMessageFor(a => a.busName)
+
+            </div>
+        @*</div>
+        <div class="row form-group">*@
+            <div class="col-md-2">
+                @Html.LabelFor(a => a.busCode)
+                @Html.TextBoxFor(a => a.busCode, new { @class = "form-control", @placeholder = "Bus Code" })
+                @Html.ValidationMessageFor(a => a.busCode)
+            </div>
+        @*</div>
+ 
+        <div class="row form-group">*@
+            <div class="col-md-2 ">
+                @Html.DisplayFor(a => a.busCode, new { @class = "text-color-white" })
+                <button type="submit" value="Save" class="btn btn-default btn-block"  >Save</button>
+                @*<span class="glyphicon glyphicon-search"> Save</span>*@
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+}
+@Scripts.Render("~/bundles/bootstrap")
+
+@Scripts.Render("~/bundles/jquery")
+@section scripts
+{
+
+    
+}

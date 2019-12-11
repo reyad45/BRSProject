@@ -1,0 +1,271 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using System.Web.Mvc.Html
+@model BRS.Models.BusInfo
+
+@{
+    ViewBag.Title = "Schedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="headingStyle" style="margin-top:200px">
+    <span class="top right"></span>
+    <span class="top left"></span>
+    <h2>Add Bus Schedule</h2>
+    <h2 class="text-center"><label class="label label-success">@ViewBag.Message</label></h2>
+    <hr />
+    <span class="bottom right"></span>
+    <span class="bottom left"></span>
+</div>
+
+
+@using (Html.BeginForm("Create", "Businfo", FormMethod.Post, new { @class = "form-horizontal , Bus-form-width", role = "form" }))
+{
+    <div class="login-form">
+
+        <div class="row form-group">
+
+            <div class="col-md-10">
+                @Html.LabelFor(a => a.BusNameId)
+
+                @Html.DropDownListFor(a => a.BusNameId, new SelectList(ViewBag.BusNames, "Id", "BusName"), "---Select----", new { @class = "form-control" })
+                @Html.ValidationMessageFor(a => a.BusNameId)
+            </div>
+            <div class="col-md-2">
+
+     
+            @Html.LabelFor(a=>a.busNo)
+            @Html.TextBoxFor(a => a.busNo, new  { @class="form-control", @placeholder="Bus No"})
+           
+
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-6">
+
+                @Html.LabelFor(a => a.sourceStation)
+                @Html.TextBoxFor(a => a.sourceStation, new { @class = "form-control", @placeholder = "Bus Source Station" })
+                @Html.ValidationMessageFor(a => a.sourceStation)
+
+            </div>
+            <div class="col-md-6">
+                @Html.LabelFor(a => a.desStation)
+                @Html.TextBoxFor(a => a.desStation, new { @class = "form-control", @placeholder = "Destination Station" })
+                @Html.ValidationMessageFor(a => a.desStation)
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.Fdate)
+
+                @Html.TextBoxFor(c => c.Fdate, new { id = "datepicker", @class = "form-control ", data_provide = "datepicker", data_date_format = "yyyy-mm-dd" })
+                @Html.ValidationMessageFor(a => a.Fdate)
+
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.Tdate)
+                @Html.TextBoxFor(c => c.Tdate, new { id = "datepicker", @class = "form-control ", data_provide = "datepicker", data_date_format = "yyyy-mm-dd" })
+                @Html.ValidationMessageFor(a => a.Tdate)
+
+            </div>
+            <div class="col-md-3">
+
+
+                @Html.LabelFor(a => a.sTime)
+
+                @*@Html.TextBoxFor(a => a.busTime, new { @class = "form-control" })*@
+                @Html.TextBoxFor(model => model.sTime, new { @class = "form-control timepicker" })
+
+            </div>
+            <div class="col-md-3">
+
+
+                @Html.LabelFor(a => a.ETime)
+
+                @*@Html.TextBoxFor(a => a.busTime, new { @class = "form-control" })*@
+                @Html.TextBoxFor(model => model.ETime, new { @class = "form-control timepicker-End" })
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-6">
+                @Html.LabelFor(a => a.interStation)
+                @Html.TextBoxFor(a => a.interStation, new { @class = "form-control", @placeholder = "Intermediate Station" })
+            </div>
+
+
+            <div class="col-md-6">
+
+                @Html.LabelFor(a => a.maxSeat)
+
+                @Html.TextBoxFor(a => a.maxSeat, new { @class = "form-control", @placeholder = "Max Seat" })
+               @Html.ValidationMessageFor(a => a.maxSeat)
+
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-6">
+                @Html.LabelFor(a => a.description)
+                @Html.TextAreaFor(a => a.description, new { @class = "form-control", @placeholder = "Description" })
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-md-6 text-right">
+                @*<input type="submit" value="Save Bus Info" class="btn btn-primary " />*@
+                <input type="submit" value="Save " class="btn btn-primary " />
+            </div>
+        </div>
+
+
+    </div>
+
+}
+
+
+@Scripts.Render("~/bundles/bootstrap")
+
+@Scripts.Render("~/bundles/jquery")
+@section scripts
+{
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+<link href="~/Content/jquery-ui.theme.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$('input.timepicker').timepicker({});
+            $('.timepicker').timepicker({
+                timeFormat: 'h:mm p',
+                interval: 15,
+                minTime: '5',
+                maxTime: '11:45pm',
+                defaultTime: '5',
+                startTime: '5:00',
+                dynamic: true,
+                dropdown: true,
+                scrollbar: true
+            });
+            $('.timepicker-End').timepicker({
+                timeFormat: 'h:mm p',
+                interval: 15,
+                minTime: '8',
+                //maxTime: '11:45pm',
+                defaultTime: '8',
+                startTime: '8:00',
+                dynamic: true,
+                dropdown: true,
+                scrollbar: true
+            });
+
+            $("#datepicker").datepicker('setDate', 'today');
+            $("#datepicker").datepicker({
+
+                format: 'yyyy-mm-dd'
+
+            });
+
+            $("#desStation, #sourceStation").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Businfo/GetDestination",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.Name, value: item.Name };
+                            }))
+
+                        }
+                    })
+                },
+                messages: {
+                    noResults: "",
+                    results: function (count) {
+                        return count + (count > 1 ? ' results' : ' result ') + ' found';
+                    }
+                }
+            });
+
+            //$("#busName").autocomplete({
+            //    source: function (request, response) {
+            //        $.ajax({
+            //            url: "/Businfo/GetBusName",
+            //            type: "POST",
+            //            dataType: "json",
+            //            data: { Prefix: request.term },
+            //            success: function (data) {
+            //                response($.map(data, function (item) {
+            //                    return { label: item.bName, value: item.bName };
+            //                }))
+
+            //            }
+            //        })
+            //    },
+            //    messages: {
+            //        noResults: "",
+            //        results: function (count) {
+            //            return count + (count > 1 ? ' results' : ' result ') + ' found';
+            //        }
+            //    }
+            //});
+            //Bus Source Station Auto Complete
+
+            $("#sourceStation").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Businfo/Getsource",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.SourceName1, value: item.SourceName1 };
+                            }))
+
+                        }
+                    })
+                },
+                messages: {
+                    noResults: "",
+                    results: function (count) {
+                        return count + (count > 1 ? ' results' : ' result ') + ' found';
+                    }
+                }
+            });
+
+            //Intermideat Station
+            $("#interStation").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Businfo/GetinterStation",
+                        type: "POST",
+                        dataType: "json",
+                       
+                        data: { Prefix: request.term, maxRows: 12 },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.InterStation, value: item.InterStation };
+                            }))
+
+                        }
+                    })
+                },
+                messages: {
+                    noResults: "",
+                    results: function (count) {
+                        return count + (count > 1 ? ' results' : ' result ') + ' found';
+                    }
+                }
+            });
+
+            //$("#Save").on("click", function () {
+            //    // creditToBeTaken = 100;
+            //    $("#BusSchedule").submit();
+            //});
+
+        });
+
+    </script>
+}

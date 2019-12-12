@@ -33,8 +33,6 @@ namespace BRS.Getway
             con.Close();
             return Userlogins;
 
-
-
         }
 
     }

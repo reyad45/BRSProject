@@ -15,7 +15,15 @@ namespace BRS.Controllers
         BusTicketBLL GetBusTicket = new BusTicketBLL();
         public ActionResult Index()
         {
-            return View();
+            if (Session["UserID"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login","User");
+            }  
+           
         }
 
         public JsonResult GetDestination(string prefix)

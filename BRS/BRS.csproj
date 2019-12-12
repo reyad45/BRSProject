@@ -254,7 +254,25 @@
     </Compile>
     <Compile Include="Models\Userlogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SampleDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SampleDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SampleDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SampleDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SampleDataModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="User.cs">
+      <DependentUpon>SampleDataModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-lumen.css" />
@@ -416,6 +434,16 @@
     <Content Include="plugins\parallax-js-master\parallax.min.js" />
     <Content Include="plugins\progressbar\progressbar.min.js" />
     <Content Include="plugins\scrollmagic\ScrollMagic.min.js" />
+    <Content Include="SampleDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SampleDataModel.edmx</DependentUpon>
+      <LastGenOutput>SampleDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SampleDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SampleDataModel.edmx</DependentUpon>
+      <LastGenOutput>SampleDataModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\SampleDBModeledmx.edmx">
@@ -479,6 +507,13 @@
     <Content Include="plugins\font-awesome-4.7.0\scss\_screen-reader.scss" />
     <Content Include="plugins\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="plugins\font-awesome-4.7.0\scss\_variables.scss" />
+    <EntityDeploy Include="SampleDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SampleDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="SampleDataModel.edmx.diagram">
+      <DependentUpon>SampleDataModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\fakeLoader.js" />

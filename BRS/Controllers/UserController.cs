@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BRS.Models;
 
 namespace BRS.Controllers
 {
@@ -30,9 +31,26 @@ namespace BRS.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login()
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(Userlogin aUserlogin)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                using ( DB_Entities db = new DB_Entities() )
+                {
+                    var obj =
+                        db.Users.Where(
+                            a => a.UserName.Equals(aUserlogin.userName) && a.Password.Equals(aUserlogin.Password))
+                            .FirstOrDefault();
+                    if (obj != null)
+                    {
+                        Session["UserID"] = obj.Id.ToString();
+                        Session["UserName"] = obj.UserName.ToString();
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+            }
+            return View(aUserlogin);
         }
 
 

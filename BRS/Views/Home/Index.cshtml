@@ -1,4 +1,11 @@
 ﻿@model BRS.Models.BusticketViewModel
+           
+
+@if(Session["UserName"] != null)
+{
+    @Session["UserName"].ToString() 
+   
+ } 
 <!DOCTYPE html>
 <html lang="en">
 <head>

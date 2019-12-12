@@ -18,31 +18,77 @@
                 @ViewBag.Message
             </div>
         }
-        <table>
-            <tr>
-                <td>@Html.LabelFor(a => a.userName)</td>
-                <td>@Html.TextBoxFor(a => a.userName)</td>
-                <td>@Html.ValidationMessageFor(a => a.userName)</td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.LabelFor(a => a.Password)
-                </td>
-                <td>
-                    @Html.PasswordFor(a => a.Password)
-                </td>
-                <td>
-                    @Html.ValidationMessageFor(a => a.Password)
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input type="submit" value="Login" />
-                </td>
-                <td></td>
-            </tr>
-        </table>
-    </fieldset>
-}  
+       <table>
+                <tr>
+                    <td>@Html.LabelFor(a => a.userName)</td>
+                    <td>@Html.TextBoxFor(a => a.userName)</td>
+                    <td>@Html.ValidationMessageFor(a => a.userName)</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(a => a.Password)
+                    </td>
+                    <td>
+                        @Html.PasswordFor(a => a.Password)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(a => a.Password)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Login" />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
 
+        @*<div class="user_box_login user_box_link"><button onclick="document.getElementById('id01').style.display='block'" style="width: auto;">Login</button></div>
+        ----------------------------------------Login Form-----------------------------------------------
+
+        <div id="id01" class="modal">
+            @using (Html.BeginForm("login", "User", FormMethod.Post, new { @class = "modal-content animate", role = "form" }))
+            {
+
+                <div class="imgcontainer">
+                    <span onclick=" document.getElementById('id01').style.display = 'none' " class="close" title="close modal">&times;</span>
+                    <img src="../images/login.png" alt="Avatar" class="avatar">
+                </div>
+                <div class="container">
+
+                    @Html.LabelFor(a => a.userName, new { @class = "inputtext" })
+
+                    @Html.TextBoxFor(a => a.userName, new{ @class="inputtext"})
+
+                    @Html.ValidationMessageFor(a => a.userName)
+                    @Html.LabelFor(a => a.password)
+                    @Html.PasswordFor(a => a.Password)
+                    @Html.ValidationMessageFor(a => a.Password)
+                    <button type="submit" class="login-btn">Login</button>
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember" name=""> Remember me
+                    </label>
+                </div>
+                <div class="container" style="background-color: #f1f1f1">
+                    <button type="button" onclick=" document.getElementById('id01').style.display = 'none' " class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a href="#">Password?</a></span>
+                </div>
+            }
+        </div>*@
+
+
+    </fieldset>
+    }
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>

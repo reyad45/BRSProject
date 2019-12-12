@@ -17,13 +17,7 @@ namespace BRS.Controllers
             return View();
         }
 
-        public ActionResult Registration()
-        {
-            UserBll aUserBll = new UserBll();
-            ViewBag.GetRole = aUserBll.GetUserRole();
-           
-            return View();
-        }
+    
 
         public ActionResult Login()
         {
@@ -54,5 +48,25 @@ namespace BRS.Controllers
         }
 
 
-	}
+
+
+        public ActionResult Registration()
+        {
+            UserBll aUserBll = new UserBll();
+            ViewBag.GetRole = aUserBll.GetUserRole();
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Registration(Userlogin auserlogin)
+        {
+            UserBll aUserBll = new UserBll();
+            ViewBag.GetRole = aUserBll.GetUserRole();
+            ViewBag.Message = aUserBll.saveUserReg(auserlogin);
+
+
+            return View();
+        }
+    
+}
 }

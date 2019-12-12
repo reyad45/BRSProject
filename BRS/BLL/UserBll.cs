@@ -9,12 +9,29 @@ namespace BRS.BLL
 {
     public class UserBll
     {
-       
-        public List<Userlogin>GetUserRole()
+
+        UserGetway aUserGetway = new UserGetway();
+        public List<Userlogin> GetUserRole()
         {
-            UserGetway aUserGetway = new UserGetway();
+
             return aUserGetway.GetUserRole();
         }
-        
+        public string saveUserReg(Userlogin auserlogin)
+        {
+            if (!aUserGetway.isExistUser(auserlogin.userName))
+            {
+                if (aUserGetway.saveReg(auserlogin) > 0)
+                {
+                    return "Registration Successfully";
+                }
+                return "Error!! Not Save.......";
+            }
+            else
+            {
+                return "This User Name Already Exist!!!";
+            }
+        }
+
+
     }
 }

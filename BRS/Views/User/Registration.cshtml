@@ -6,40 +6,75 @@
     ViewBag.Title = "User Registration";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/registration.css" rel="stylesheet" />
+
+@*<div class="headingStyle" style="margin-top:200px">
+        <span class="top right"></span>
+        <span class="top left"></span>
+        <h2>User Registration</h2>
+        <h2 class="text-center"><label class="label label-success">@ViewBag.Message</label></h2>
+        <hr />
+        <span class="bottom right"></span>
+        <span class="bottom left"></span>
+    </div>*@
 
 
-<div class="headingStyle">
-    <span class="top right"></span>
-    <span class="top left"></span>
-    <h2>Add Bus Schedule</h2>
-    <h2 class="text-center"><label class="label label-success">@ViewBag.Message</label></h2>
-    <hr />
-    <span class="bottom right"></span>
-    <span class="bottom left"></span>
-</div>
-
-
-@using (Html.BeginForm("Registration", "User", FormMethod.Post, new { @class = "form-horizontal , Bus-form-width", role = "form" }))
+@using (Html.BeginForm("Registration", "User", FormMethod.Post, new { @class = "form-horizontal , Bus-form-width frmbordar", role = "form" }))
 {
-    <div class="login-form">
 
-        <div class="row form-group">
+    <div class="container" style="margin-top:200px">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="contact_image">
 
-            <div class="col-md-10">
-                @Html.LabelFor(a => a.id)
-
-                @Html.DropDownListFor(a => a.id, new SelectList(ViewBag.GetRole, "Id", "UserRole"), "---Select----", new { @class = "form-control" })
-           
+                </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-lg-12">
+                <div class="contact_form_container">
+                    <h2 class="contact_title text-center">Registration</h2>
+                    <div class="text-center text-primary font-weight-bold text-uppercase"><h2>@ViewBag.Message</h2></div>
 
+                    @*<input type="text" id="contact_form_name" class="contact_form_name input_field" placeholder="User Name" required="required" data-error="Name is required.">
+                        <input type="password" id="contact_form_email" class="contact_form_email input_field" placeholder="Password" required="required" data-error="Email is required.">*@
+                    @Html.LabelFor(a => a.userName, new { @class = "textlabel" })
+                    @Html.TextBoxFor(a => a.userName, new { @class = "contact_form_email input_field", placeholder = "Enter User Name" })
+                    <br />
+                    @Html.LabelFor(a => a.Password, new { @class = "textlabel" })
+                    @Html.PasswordFor(a => a.Password, new { @class = "contact_form_email input_field", placeholder = "Enter Password" })
+                    <br />
+                    @Html.LabelFor(a => a.userRole, new { @class = "textlabel" })
 
-                @Html.LabelFor(a=>a.userName)
-                @Html.TextBoxFor(a => a.userName, new  { @class="form-control", @placeholder="Bus No"})
+                    @Html.DropDownListFor(a => a.id, new SelectList(ViewBag.GetRole, "Id", "UserRole"), "---Select----", new { @class = " contact_form_email input_field text-danger" })
+                    @*<textarea id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>*@
+                    <br />
 
+                    <button type="submit" id="form_submit_button" class="form_submit_button button">Create<span></span><span></span><span></span></button>
 
+                </div>
             </div>
         </div>
-        </div>
+    </div>
+
+
+    @*<div class="login-form">
+
+            <div class="row form-group">
+
+                <div class="col-md-10">
+                    @Html.LabelFor(a => a.id)
+
+                    @Html.DropDownListFor(a => a.id, new SelectList(ViewBag.GetRole, "Id", "UserRole"), "---Select----", new { @class = "form-control" })
+
+                </div>
+                <div class="col-md-2">
+
+
+                    @Html.LabelFor(a => a.userName)
+                    @Html.TextBoxFor(a => a.userName, new { @class = "form-control", @placeholder = "Bus No" })
+
+
+                </div>
+            </div>
+        </div>*@
 }
 

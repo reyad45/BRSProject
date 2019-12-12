@@ -26,13 +26,15 @@ namespace BRS.Controllers
 
         public ActionResult Login()
         {
-            return view();
+            return View();
         }
 
-        private ActionResult view()
+        [HttpPost]
+        public ActionResult Login()
         {
-            throw new NotImplementedException();
+            return View();
         }
+
 
 	}
 }

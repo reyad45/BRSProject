@@ -9,16 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="~/styles/bootstrap4/bootstrap.min.css">
     <link href="~/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
-    <link href="~/plugins/OwlCarousel2-2.2.1/owl.carousel.css" rel="stylesheet" />
-
-    <link href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" rel="stylesheet" />
-
-    <link href="~/plugins/OwlCarousel2-2.2.1/animate.css" rel="stylesheet" />
-    
-    <link href="~/styles/main_styles.css" rel="stylesheet" />
-    <link href="~/Content/mystyle.css" rel="stylesheet" />
-    <link href="~/styles/responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/responsive.css">
+   
+    <link href="~/Content/login.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -47,7 +44,37 @@
                                 </ul>
                             </div>
                             <div class="user_box ml-auto">
-                                <div class="user_box_login user_box_link">@Html.ActionLink("Login", "login", "User")</div>
+                                <div class="user_box_login user_box_link"><button onclick="document.getElementById('id01').style.display='block'" style="width: auto;">Login</button></div>
+                                <!------------------------------------------Login Form------------------------------------------------->
+
+                                <div id="id01" class="modal">
+
+                                    @using (Html.BeginForm("login", "User", FormMethod.Post, new { @class = "modal-content animate", role = "form" }))
+                                    {
+
+                                        <div class="imgcontainer">
+                                            <span onclick=" document.getElementById('id01').style.display = 'none' " class="close" title="close modal">&times;</span>
+                                            <img src="../images/login.png" alt="Avatar" class="avatar">
+                                        </div>
+                                        <div class="container">
+                                            <label for="uname"><b>UserName</b></label>
+                                            <input type="text" placeholder="Enter Username" name="uname" required>
+                                            <label for="psw"><b>Password</b></label>
+                                            <input type="Password" placeholder="Password" name="" required>
+                                            <button type="submit" class="login-btn">Login</button>
+                                            <label>
+                                                <input type="checkbox" checked="checked" name="remember" name=""> Remember me
+                                            </label>
+                                        </div>
+                                        <div class="container" style="background-color: #f1f1f1">
+                                            <button type="button" onclick=" document.getElementById('id01').style.display = 'none' " class="cancelbtn">Cancel</button>
+                                            <span class="psw">Forgot <a href="#">Password?</a></span>
+                                        </div>
+                                    }
+                                </div>
+                                <!--End-->
+
+
                                 <div class="user_box_register user_box_link"><a href="#">register</a></div>
                             </div>
                         </div>
@@ -130,16 +157,15 @@
                 <div class="menu_close_container"><div class="menu_close"></div></div>
                 <div class="logo menu_logo"><a href="#"><img src="~/images/logo.png" alt=""></a></div>
                 <ul>
-                    <li class="menu_item"><a href="#">home</a></li>
-                    <li class="menu_item"><a href="about.html">about us</a></li>
-                    <li class="menu_item"><a href="offers.html">offers</a></li>
-                    <li class="menu_item"><a href="blog.html">news</a></li>
-                    <li class="menu_item"><a href="contact.html">contact</a></li>
+                    <li class="menu_item">@Html.ActionLink("Home", "index", "Home")</li>
+                    <li class="menu_item">@Html.ActionLink("About", "index", "About")</li>
+                    <li class="menu_item">@Html.ActionLink("Contact", "contact", "About")</li>
+                   
+                    <li onclick="document.getElementById('id01').style.display='block'" class="menu_item" style="width: auto;">Login</li>
                 </ul>
             </div>
         </div>
-
-        <!-- Home -->
+         <!-- Home -->
 
         <div class="home">
 
@@ -289,14 +315,14 @@
                             </form>
                         </div>*@
                         
-                        <div class="search_panel active">
+                        <div class="search_panel active form-group row">
                             @using (Html.BeginForm("ViewbusTicket", "Bustickets", FormMethod.Post, new { @class = "search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start", role = "form", id = "search_form_1" }))
                             {
                                 @Html.AntiForgeryToken()
 
 
 
-                                <div class="search_item">
+                                <div class="search_item col-md-3">
                                     <div>@Html.LabelFor(a => a.sourceStation)</div>
                                     @Html.TextBoxFor(a => a.sourceStation, new { @class = "form-control search_input", @placeholder = "Bus Source Station" })
                                     @Html.ValidationMessageFor(a => a.sourceStation)
@@ -304,13 +330,13 @@
                                 </div>
 
 
-                                <div class="search_item">
+                                <div class="search_item col-md-3">
                                    <div> @Html.LabelFor(a => a.desStation)</div>
                                     @Html.TextBoxFor(a => a.desStation, new { @class = "form-control search_input", @placeholder = "Destination Station" })
                                     @Html.ValidationMessageFor(a => a.desStation)
                                 </div>
 
-                                <div class="search_item">
+                                <div class="search_item col-md-2">
                                     <div> @Html.LabelFor(m => m.Jdate)</div>
 
                                     @Html.TextBoxFor(c => c.Jdate, new { id = "datepicker", @class = "form-control  search_input ", data_provide = "datepicker", data_date_format = "yyyy-mm-dd" })
@@ -320,10 +346,10 @@
                                 
 
 
-                         <div class="search_item">
+                         <div class="search_item col-md-3">
                                 <div>@Html.LabelFor(m => m.rdate)<span>  @Html.CheckBoxFor(a => a.rdates, new { @class = "checkEnable" })</span>
                                     </div>
-                                    <div id="Returndate">
+                                    <div id="">
                                       @Html.TextBoxFor(c => c.rdate, new { id = "Rdatepicker", @class = "form-control search_input ", data_provide = "datepicker", data_date_format = "yyyy-mm-dd" })
 
                                     </div>
@@ -331,7 +357,7 @@
 
                              
 
-                                 <button type="submit" value="Save Bus Info" class="button search_button">search<span></span><span></span><span></span></button>
+                                 <button type="submit" value="Save Bus Info" class="button search_button col-md-2">search<span></span><span></span><span></span></button>
                                 
                               }
                             </div>
@@ -524,7 +550,18 @@
     <script src="~/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
     <script src="~/plugins/easing/easing.js"></script>
     <script src="~/js/custom.js"></script>
-   
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
 
 
     @section scripts
@@ -609,8 +646,7 @@
             });
 
 
-
-        });
+            });
 
     </script>
 }

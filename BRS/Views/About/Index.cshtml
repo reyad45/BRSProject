@@ -52,8 +52,52 @@
                                 </ul>
                             </div>
                             <div class="user_box ml-auto">
-                                <div class="user_box_login user_box_link">@Html.ActionLink("Login", "login", "User")</div>
-                                <div class="user_box_register user_box_link"><a href="#">register</a></div>
+                                @if (Session["username"] == null || (string)(Session["username"]) == "")
+                                {
+                                    <div class="user_box_login user_box_link"><button onclick=" document.getElementById('id01').style.display = 'block' " style="width: auto;">Login</button></div>
+                                    <!------------------------------------------Login Form------------------------------------------------->
+
+                                    <div id="id01" class="modal">
+
+                                        @using (Html.BeginForm("login", "User", FormMethod.Post, new { @class = "modal-content animate", role = "form" }))
+                                        {
+
+                                            <div class="imgcontainer">
+                                                <span onclick=" document.getElementById('id01').style.display = 'none' " class="close" title="close modal">&times;</span>
+                                                <img src="../images/login.png" alt="Avatar" class="avatar">
+                                            </div>
+                                            <div class="container">
+                                                <label for="uname"><b>UserName</b></label>
+                                                <input type="text" placeholder="Enter Username" name="uname" required>
+                                                <label for="psw"><b>Password</b></label>
+                                                <input type="Password" placeholder="Password" name="" required>
+                                                <button type="submit" class="login-btn">Login</button>
+                                                <label>
+                                                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                                                </label>
+                                            </div>
+                                            <div class="container" style="background-color: #f1f1f1">
+                                                <button type="button" onclick=" document.getElementById('id01').style.display = 'none' " class="cancelbtn">Cancel</button>
+                                                <span class="psw">Forgot <a href="#">Password?</a></span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <!--End-->
+                                }
+                                @if (Session["username"] != null || (string)(Session["username"]) != "")
+                                {
+                                    int UserRole = Convert.ToInt16(Session["UserRole"]);
+                                    if (UserRole == 1)
+                                    {
+
+                                        <div class="user_box_register user_box_link">@Html.ActionLink("register", "Registration", "User")</div>
+                                    }
+                                }
+
+                                @if (Session["username"] != null || (string)(Session["username"]) != "")
+                                {
+                                    <div class="user_box_register user_box_link">@Html.ActionLink("Logout", "login", "User")</div>
+                                }
                             </div>
                         </div>
                     </div>
@@ -80,10 +124,17 @@
                                             Bus Info
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            @if (Session["username"] != null || (string)(Session["username"]) != "")
+                                            {
+                                                int UserRole = Convert.ToInt16(Session["UserRole"]);
+                                                if (UserRole == 1)
+                                                {
+                                                    @Html.ActionLink("Bus Schedule", "Create", new { controller = "Businfo" }, new { @class = "dropdown-item main_nav_item text-success" })
 
-                                            @Html.ActionLink("Bus Schedule", "Create", new { controller = "Businfo" }, new { @class = "dropdown-item main_nav_item text-success" })
-                                            @Html.ActionLink("Add Bus Name", "BusName", new { controller = "Businfo" }, new { @class = "dropdown-item main_nav_item text-success" })
-                                            @Html.ActionLink("View Bus Name", "BusNameandView", new { controller = "Businfo" }, new { @class = "dropdown-item main_nav_item text-success" })
+                                                    @Html.ActionLink("Add Bus Name", "BusName", new { controller = "Businfo" }, new { @class = "dropdown-item main_nav_item text-success" })
+                                                    @Html.ActionLink("View Bus Name", "BusNameandView", new { controller = "Businfo" }, new { @class = "dropdown-item main_nav_item text-success" })
+                                                }
+                                            }
 
                                             <div class="dropdown-divider"></div>
                                             @Html.ActionLink("Bus Ticket", "search", new { controller = "Bustickets" }, new { @class = "dropdown-item main_nav_item text-success" })
@@ -128,8 +179,8 @@
                 </div>
             </nav>
 
-
         </header>
+
 
         <div class="menu trans_500">
             <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">

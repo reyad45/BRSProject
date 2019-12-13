@@ -12,16 +12,16 @@ namespace BRS.Getway
     {
         private string ConnectionString = WebConfigurationManager.ConnectionStrings["BRS"].ConnectionString;
         Userlogin aUserlogin = new Userlogin();
-        public int saveReg(Userlogin auserlogin)
+        public int saveReg(RegisterView auserlogin)
         {
             SqlConnection con = new SqlConnection(ConnectionString);
             con.Open();
             string sqlQuery = "insert into [User] (userName, password, userRole) values (@uName, @uPassword, @uRole);";
             SqlCommand com = new SqlCommand(sqlQuery, con);
             com.Parameters.Clear();
-            com.Parameters.AddWithValue("uName", auserlogin.userName);
+            com.Parameters.AddWithValue("uName", auserlogin.UserName);
             com.Parameters.AddWithValue("uPassword", auserlogin.Password);
-            com.Parameters.AddWithValue("uRole", auserlogin.id);
+            com.Parameters.AddWithValue("uRole", auserlogin.Id);
             int rowcount = com.ExecuteNonQuery();
             con.Close();
             return rowcount;
@@ -57,7 +57,7 @@ namespace BRS.Getway
             {
                 Userlogin auserLong = new Userlogin();
                 auserLong.id = Convert.ToInt16(reader["id"].ToString());
-                auserLong.userRole = reader["Role"].ToString();
+                auserLong.RoleName = reader["Role"].ToString();
                 Userlogins.Add(auserLong);
             }
             reader.Close();

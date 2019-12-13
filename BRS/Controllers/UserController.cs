@@ -40,10 +40,17 @@ namespace BRS.Controllers
                     {
                         Session["UserID"] = obj.Id.ToString();
                         Session["UserName"] = obj.UserName.ToString();
+                        Session["UserRole"] = obj.UserRole.ToString();
                         return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                      //  ViewBag.Message = "invalid user name or password";
+                        ModelState.AddModelError("", "Invalid User Name or Password");
                     }
                 }
             }
+           
             return View(aUserlogin);
         }
 
@@ -58,7 +65,7 @@ namespace BRS.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Registration(Userlogin auserlogin)
+        public ActionResult Registration(RegisterView auserlogin)
         {
             UserBll aUserBll = new UserBll();
             ViewBag.GetRole = aUserBll.GetUserRole();

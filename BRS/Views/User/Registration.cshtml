@@ -1,12 +1,12 @@
 ﻿@using System.ComponentModel.DataAnnotations
 @using System.Web.Mvc.Html
-@model BRS.Models.Userlogin
+@model BRS.Models.RegisterView
 
 @{
     ViewBag.Title = "User Registration";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/Content/registration.css" rel="stylesheet" />
+
 
 @*<div class="headingStyle" style="margin-top:200px">
         <span class="top right"></span>
@@ -35,24 +35,55 @@
                     <div class="text-center text-primary font-weight-bold text-uppercase"><h2>@ViewBag.Message</h2></div>
 
                     @*<input type="text" id="contact_form_name" class="contact_form_name input_field" placeholder="User Name" required="required" data-error="Name is required.">
-                        <input type="password" id="contact_form_email" class="contact_form_email input_field" placeholder="Password" required="required" data-error="Email is required.">*@
-                    @Html.LabelFor(a => a.userName, new { @class = "textlabel" })
-                    @Html.TextBoxFor(a => a.userName, new { @class = "contact_form_email input_field", placeholder = "Enter User Name" })
-                    <br />
-                    @Html.LabelFor(a => a.Password, new { @class = "textlabel" })
-                    @Html.PasswordFor(a => a.Password, new { @class = "contact_form_email input_field", placeholder = "Enter Password" })
-                    <br />
-                    @Html.LabelFor(a => a.userRole, new { @class = "textlabel" })
+            <input type="password" id="contact_form_email" class="contact_form_email input_field" placeholder="Password" required="required" data-error="Email is required.">*@
+                    <div style="padding-left:100px">
+                        <div class="form-grou row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(a => a.userRole, new { @class = "textlabel" })
+                            </div>
+                            <div class="col-md-9">
+                                @Html.DropDownListFor(a => a.Id, new SelectList(ViewBag.GetRole, "Id", "RoleName"), "---Select----", new { @class = " contact_form_email input_field text-danger" })
+                            </div>
+                        </div>
 
-                    @Html.DropDownListFor(a => a.id, new SelectList(ViewBag.GetRole, "Id", "UserRole"), "---Select----", new { @class = " contact_form_email input_field text-danger" })
-                    @*<textarea id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>*@
-                    <br />
+                        <br />
+                        <div class="form-grou row">
+                            <div class="col-md-3">
 
-                    <button type="submit" id="form_submit_button" class="form_submit_button button">Create<span></span><span></span><span></span></button>
+                                @Html.LabelFor(a => a.UserName, new { @class = "textlabel" })
+                            </div>
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(a => a.UserName, new { @class = "contact_form_email input_field", placeholder = "Enter User Name" })
+                            </div>
+                        </div>
+                        <div class="form-grou row">
+                            <div class="col-md-3">
+                                <br />
+                                @Html.LabelFor(a => a.Password, new { @class = "textlabel" })
+                            </div>
+                            <div class="col-md-9">
+                                @Html.PasswordFor(a => a.Password, new { @class = "contact_form_email input_field", placeholder = "Enter Password" })
+                            </div>
+                        </div>
+                        <div class="form-grou row">
+                            <div class="col-md-3">
+                                <br />
+                                @Html.LabelFor(a => a.ConfirmPassword, new { @class = "textlabel" })
+                            </div>
+                            <div class="col-md-9">
+                                @Html.PasswordFor(a => a.ConfirmPassword, new { @class = "contact_form_email input_field", placeholder = "Enter Confirm Password" })
+                            </div>
+                        </div>
+                        @*<textarea id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>*@
+                      
+                        <div style="padding-left:120px">
+                            <button type="submit" id="form_submit_button" class="form_submit_button button center">Create<span></span><span></span><span></span></button>
+                        </div>
 
+                    </div>
                 </div>
-            </div>
-        </div>
+                    </div>
+                </div>
     </div>
 
 

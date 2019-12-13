@@ -16,9 +16,9 @@ namespace BRS.BLL
 
             return aUserGetway.GetUserRole();
         }
-        public string saveUserReg(Userlogin auserlogin)
+        public string saveUserReg(RegisterView auserlogin)
         {
-            if (!aUserGetway.isExistUser(auserlogin.userName))
+            if (!aUserGetway.isExistUser(auserlogin.UserName))
             {
                 if (aUserGetway.saveReg(auserlogin) > 0)
                 {

@@ -72,6 +72,8 @@ namespace BRS.Models
         public DateTime Fdate { get; set; }
         [Display(Name="To")]
         public DateTime Tdate { get; set; }
+
+        public int SetPrice { get; set; }
         public string entryBy { get; set; }
         public DateTime entryDate { get; set; }
 

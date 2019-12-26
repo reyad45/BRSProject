@@ -1,13 +1,19 @@
-﻿@model List<BRS.Models.BusInfo>
+﻿@using System.Web.UI.WebControls
+@using BRS.BLL
+@using BRS.Models
+@model List<BRS.Models.BusInfo>
 @{
     ViewBag.Title = "ViewbusTicket";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
+
 }
 
 <link href="~/Content/Site.css" rel="stylesheet" />
 <link href="~/Content/data%20table.bootstrap.css" rel="stylesheet" />
 @*View All Bus Name*@><div class="login-form  center-block" style="margin-top:200px">
-    <h3 class="text-center text-content" id="demoGrid"> View busTicket</h3>
+                          <h3 class="text-center text-content" id="demoGrid"> View busTicket</h3>
+    <h3 class="text-center text-contents "><strong>@ViewBag.sou To @ViewBag.des  Date: @ViewBag.jdate</strong></h3>
     <table class="table table-bordered table-striped table-bordered dt-responsive nowrap text-contents " id="dataTable">
         <thead>
             <tr>
@@ -36,7 +42,7 @@
                             <span> Arrival Time :</span><span class="text-info">@data.ETime</span>
                         </td>
                         <td style="padding-top:30px">@data.availSeat</td>
-                        <td></td>
+                        <td style ="padding-top: 30px;">@data.SetPrice</td>
                         <td style="padding-top:20px"><button type="submit" class="btn btn-info">View Seats</button></td>
 
 

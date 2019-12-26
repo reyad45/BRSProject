@@ -20,7 +20,21 @@
     <link rel="stylesheet" type="text/css" href="~/styles/responsive.css">
    
     <link href="~/Content/login.css" rel="stylesheet" />
-    
+    <style type="text/css">
+        .busLogo {
+            padding-right: 20px;
+        }
+
+        .LocaLogo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .busBack {
+            background: #f5f6f9;
+            padding: 30px;
+        }
+    </style>
 
 </head>
 
@@ -115,6 +129,8 @@
                                 <ul class="main_nav_list">
                                     <li class="main_nav_item">@Html.ActionLink("Home", "index", "Home")</li>
                                     <li class="main_nav_item">@Html.ActionLink("About", "index", "About")</li>
+                                    <li class="main_nav_item">@Html.ActionLink("Employee Add", "Save", "Employee")</li>
+
                 
                                     
                                     <li class="main_nav_item dropdown ">
@@ -393,7 +409,93 @@
                 </div>
             </div>
         </div>
+        <!-------------------------------------------------------Available Bus------------------------------------------------------------>
+        <div class="busBack">
+            <h2 class="text-center text-success" style="padding-bottom: 30px">AVAILABLE BUS OPERATORS</h2>
+            <div class="row ">
+                <div class="col-md-4">
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>AK Travels</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Aqib Enterprise</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Bablu Enterprise</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Bappy Enterprise</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Barkat Travels</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Desh Travels</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Dhaka Express</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Dolphin Chair Coach Service</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Econo Service</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Green Saintmartin Express</span></p>
+                </div>
+                <div class="col-md-4">
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Hanif Enterprise</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>HR Travels</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Modern Line</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>National Travels</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>President Travels</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Relax Transport</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>DRM Travels</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>S.Alam</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Saintmartin Paribahan</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Saintmartin Travels</span></p>
+                </div>
+                <div class="col-md-4">
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Senjuti Travels</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Seven Star Paribahan</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Shah Ali Paribahan</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Shanti Paribahan</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>President Travels</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>SI Enterprise</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Sonartori Paribahan</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Uzzal Travels</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Saintmartin Paribahan</span></p>
+                    <p> <img src="../images/bus.png" class="busLogo"> <span>Rumin Paribahan Limited</span></p>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+        <div class="busBack">
+            <h2 class="text-center text-success" style="padding-bottom: 30px">POPULAR BUS ROUTES</h2>
+            <div class="row ">
+                <div class="col-md-4">
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - CHITTAGONG</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - COX'S BAZAR</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - KHAGRACHHARI</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - RANGAMATI</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - BANDARBAN</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - KOLKATA</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - SILIGURI</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - RAJSHAHI</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - BARGUNA</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - KUAKATA</span></p>
+                </div>
 
+
+
+                <div class="col-md-4">
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - CHITTAGONG</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - COX'S BAZAR</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - KHAGRACHHARI</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - RANGAMATI</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - BANDARBAN</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - KOLKATA</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - SILIGURI</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - RAJSHAHI</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - BARGUNA</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - KUAKATA</span></p>
+                </div>
+                <div class="col-md-4">
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - CHITTAGONG</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - COX'S BAZAR</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - KHAGRACHHARI</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - RANGAMATI</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - BANDARBAN</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - KOLKATA</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - SILIGURI</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - RAJSHAHI</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - BARGUNA</span></p>
+                    <p> <img src="../images/location2.png" class="LocaLogo"> <span>DHAKA - KUAKATA</span></p>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -424,7 +526,7 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- Footer -->
 
         <footer class="footer">

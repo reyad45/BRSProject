@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="busModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'bus.dbo.Employee2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Employee2">
+          <Key>
+            <PropertyRef Name="Autt" />
+          </Key>
+          <Property Name="RecID" Type="int" />
+          <Property Name="EmpID" Type="varchar" MaxLength="50" />
+          <Property Name="EName" Type="varchar" MaxLength="100" />
+          <Property Name="EFName" Type="varchar" MaxLength="100" />
+          <Property Name="EMName" Type="varchar" MaxLength="100" />
+          <Property Name="MAdd1" Type="varchar" MaxLength="400" />
+          <Property Name="PAdd1" Type="varchar" MaxLength="400" />
+          <Property Name="DisID" Type="int" />
+          <Property Name="ThaID" Type="int" />
+          <Property Name="UnID" Type="int" />
+          <Property Name="DOB" Type="smalldatetime" />
+          <Property Name="ConNum1" Type="varchar" MaxLength="50" />
+          <Property Name="ConNum2" Type="varchar" MaxLength="50" />
+          <Property Name="ENID" Type="varchar" MaxLength="50" />
+          <Property Name="PosID" Type="int" />
+          <Property Name="PID" Type="int" />
+          <Property Name="JDate" Type="smalldatetime" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Entryby" Type="varchar" MaxLength="50" />
+          <Property Name="Entrydate" Type="smalldatetime" />
+          <Property Name="UpdateDate" Type="smalldatetime" />
+          <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+          <Property Name="Autt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="busModel2StoreContainer">
+          <EntitySet Name="Employee2" EntityType="Self.Employee2" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Employee2].[RecID] AS [RecID], 
+    [Employee2].[EmpID] AS [EmpID], 
+    [Employee2].[EName] AS [EName], 
+    [Employee2].[EFName] AS [EFName], 
+    [Employee2].[EMName] AS [EMName], 
+    [Employee2].[MAdd1] AS [MAdd1], 
+    [Employee2].[PAdd1] AS [PAdd1], 
+    [Employee2].[DisID] AS [DisID], 
+    [Employee2].[ThaID] AS [ThaID], 
+    [Employee2].[UnID] AS [UnID], 
+    [Employee2].[DOB] AS [DOB], 
+    [Employee2].[ConNum1] AS [ConNum1], 
+    [Employee2].[ConNum2] AS [ConNum2], 
+    [Employee2].[ENID] AS [ENID], 
+    [Employee2].[PosID] AS [PosID], 
+    [Employee2].[PID] AS [PID], 
+    [Employee2].[JDate] AS [JDate], 
+    [Employee2].[Status] AS [Status], 
+    [Employee2].[Entryby] AS [Entryby], 
+    [Employee2].[Entrydate] AS [Entrydate], 
+    [Employee2].[UpdateDate] AS [UpdateDate], 
+    [Employee2].[UpdateBy] AS [UpdateBy], 
+    [Employee2].[Autt] AS [Autt]
+    FROM [dbo].[Employee2] AS [Employee2]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="busModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee2">
+          <Key>
+            <PropertyRef Name="Autt" />
+          </Key>
+          <Property Name="RecID" Type="Int32" />
+          <Property Name="EmpID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EFName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EMName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAdd1" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="PAdd1" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="DisID" Type="Int32" />
+          <Property Name="ThaID" Type="Int32" />
+          <Property Name="UnID" Type="Int32" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="ConNum1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConNum2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ENID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PosID" Type="Int32" />
+          <Property Name="PID" Type="Int32" />
+          <Property Name="JDate" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Entryby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Entrydate" Type="DateTime" Precision="0" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Autt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityContainer Name="EmpEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employee2" EntityType="Self.Employee2" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="busModel2StoreContainer" CdmEntityContainer="EmpEntities">
+          <EntitySetMapping Name="Employee2">
+            <EntityTypeMapping TypeName="busModel2.Employee2">
+              <MappingFragment StoreEntitySet="Employee2">
+                <ScalarProperty Name="RecID" ColumnName="RecID" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="EName" ColumnName="EName" />
+                <ScalarProperty Name="EFName" ColumnName="EFName" />
+                <ScalarProperty Name="EMName" ColumnName="EMName" />
+                <ScalarProperty Name="MAdd1" ColumnName="MAdd1" />
+                <ScalarProperty Name="PAdd1" ColumnName="PAdd1" />
+                <ScalarProperty Name="DisID" ColumnName="DisID" />
+                <ScalarProperty Name="ThaID" ColumnName="ThaID" />
+                <ScalarProperty Name="UnID" ColumnName="UnID" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="ConNum1" ColumnName="ConNum1" />
+                <ScalarProperty Name="ConNum2" ColumnName="ConNum2" />
+                <ScalarProperty Name="ENID" ColumnName="ENID" />
+                <ScalarProperty Name="PosID" ColumnName="PosID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="JDate" ColumnName="JDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Entryby" ColumnName="Entryby" />
+                <ScalarProperty Name="Entrydate" ColumnName="Entrydate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="Autt" ColumnName="Autt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

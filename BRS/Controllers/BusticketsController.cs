@@ -21,7 +21,15 @@ namespace BRS.Controllers
 		public ActionResult ViewbusTicket(string sourceStation, string desStation, DateTime jdate)
 		{
 			List<BusInfo> GetTicket = GetBusTicket.GetTicketInfo(sourceStation, desStation, jdate);
+		    
             //var listofTicket = GetTicket.FindAll(a => a.sourceStation  == sourceStation).ToList();
+            ViewData.Add(sourceStation, 12);
+
+            ViewBag.sou = sourceStation;
+		    ViewBag.des = desStation;
+            var date = jdate.ToString("MM/dd/yyyy");
+            ViewBag.jdate = date;
+
             return View(GetTicket);
 		}
 

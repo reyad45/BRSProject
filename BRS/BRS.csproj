@@ -162,6 +162,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BLL\BusinfoBLL.cs" />
     <Compile Include="BLL\BusTicketBLL.cs" />
+    <Compile Include="BLL\EmployeeBLL.cs" />
     <Compile Include="BLL\UserBll.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Getway\BusinfoGetway.cs" />
     <Compile Include="Getway\BusticketGetway.cs" />
+    <Compile Include="Getway\EmplyeeGetway.cs" />
     <Compile Include="Getway\UserGetway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -215,8 +217,44 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Distination.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\District.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>District.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\District.cs">
+      <DependentUpon>District.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\District.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>District.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\District1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>District.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Employee.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Employee.cs">
       <DependentUpon>SampleDBModeledmx.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Employee.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Employee.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee2.cs">
+      <DependentUpon>Employee.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\SampleDBModeledmx.Context.cs">
@@ -251,6 +289,9 @@
     </Compile>
     <Compile Include="Models\SourceStation.cs">
       <DependentUpon>SourceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Thana.cs">
+      <DependentUpon>District.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Userlogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -387,6 +428,26 @@
       <DependentUpon>Distination.edmx</DependentUpon>
       <LastGenOutput>Distination.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\District.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>District.edmx</DependentUpon>
+      <LastGenOutput>District.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\District.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>District.edmx</DependentUpon>
+      <LastGenOutput>District1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Employee.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Employee.edmx</DependentUpon>
+      <LastGenOutput>Employee.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Employee.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Employee.edmx</DependentUpon>
+      <LastGenOutput>Employee1.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\SampleDBModeledmx.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SampleDBModeledmx.edmx</DependentUpon>
@@ -514,6 +575,20 @@
     <Content Include="SampleDataModel.edmx.diagram">
       <DependentUpon>SampleDataModel.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\Employee.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Employee.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Employee.edmx.diagram">
+      <DependentUpon>Employee.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\District.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>District.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\District.edmx.diagram">
+      <DependentUpon>District.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\fakeLoader.js" />
@@ -587,10 +662,10 @@
     <Content Include="Views\About\contact.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\_myLayout.cshtml" />
+    <Content Include="Views\Employee\Save.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Employee\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

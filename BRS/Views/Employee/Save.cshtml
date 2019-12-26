@@ -1,0 +1,285 @@
+﻿@model BRS.Models.Employee2
+
+@{
+    ViewBag.Title = "Save";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Site.css" rel="stylesheet" />
+<div class="form-horizontal">
+
+<div class="headingStyle" style="margin-top:200px">
+    <span class="top right"></span>
+    <span class="top left"></span>
+    <h2>Add Bus Employee</h2>
+    <h2 class="text-center"><label class="label label-success">@ViewBag.Message</label></h2>
+    <hr />
+    <span class="bottom right"></span>
+    <span class="bottom left"></span>
+</div>
+</div>
+
+
+    @using (Html.BeginForm("Save", "Employee", FormMethod.Post, new { @class = "form-horizontal", role = "form"  } ))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+            <div class="login-form container">
+        <div class="form-group row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.EmpID)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.EmpID, new { @class = "form-control", @placeholder = "Employee Id" })
+                @Html.ValidationMessageFor(model => model.EmpID)
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.EName)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.EName, new { @class = "form-control", @placeholder = "Employee Name" })
+                @Html.ValidationMessageFor(model => model.EName)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.EFName)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.EFName, new { @class = "form-control", @placeholder = "Father Name" })
+                @Html.ValidationMessageFor(model => model.EFName)
+            </div>
+        
+
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.EMName)
+        </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.EMName, new { @class = "form-control", @placeholder = "Mother Name" })
+                @Html.ValidationMessageFor(model => model.EMName)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.MAdd1)
+            </div>
+            <div class="col-md-4">
+                @Html.TextAreaFor(model => model.MAdd1, new { @class = "form-control", @placeholder = "Present Address" })
+                @Html.ValidationMessageFor(model => model.MAdd1)
+            </div>
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.PAdd1)
+            </div>
+            <div class="col-md-4">
+                @Html.TextAreaFor(model => model.PAdd1, new { @class = "form-control", @placeholder = "Permanent Address" })
+                @Html.ValidationMessageFor(model => model.PAdd1)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.DisID)
+            </div>
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.DisID, new SelectList(ViewBag.District, "disId", "Name"), "---Select--", new { @class = "form-control", id = "DisID" })
+                @Html.ValidationMessageFor(model => model.DisID)
+            </div>
+
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.ThaID)
+            </div>
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.ThaID, new SelectList(""), "----Select---", new { @class = "form-control", id = "ThaID" })
+                @Html.ValidationMessageFor(model => model.ThaID)
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.DOB)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.DOB, new { id = "datepicker", @class = "form-control ", data_provide = "datepicker", data_date_format = "yyyy-mm-dd" })
+                @Html.ValidationMessageFor(model => model.DOB)
+            </div>
+       
+
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.ConNum1)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.ConNum1, new { @class = "form-control", @placeholder = "Contact Number" })
+                @Html.ValidationMessageFor(model => model.ConNum1)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.ConNum2)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.ConNum2, new { @class = "form-control", @placeholder = "Contact Number 2" })
+                @Html.ValidationMessageFor(model => model.ConNum2)
+            </div>
+  
+
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.ENID)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.ENID, new { @class = "form-control", @placeholder = "NID" })
+                @Html.ValidationMessageFor(model => model.ENID)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.PosID)
+            </div>
+            <div class="col-md-4">
+                @Html.DropDownListFor(a => a.PosID, new SelectList(ViewBag.GetRole, "Id", "RoleName"), "---Select----", new { @class = " form-control" })
+                @Html.ValidationMessageFor(model => model.PosID)
+            </div>
+  
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.JDate)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.JDate, new { id = "datepicker", @class = "form-control ", data_provide = "datepicker", data_date_format = "yyyy-mm-dd" })
+                @Html.ValidationMessageFor(model => model.JDate)
+            </div>
+        
+
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+  </div>
+    }
+
+<div>
+    @Html.ActionLink("Back to List", "Save")
+</div>
+@Scripts.Render("~/bundles/bootstrap")
+
+@Scripts.Render("~/bundles/jquery")
+@section Scripts 
+    {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+    <link href="~/Content/jquery-ui.theme.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$('input.timepicker').timepicker({});
+     
+
+            $("#datepicker").datepicker('setDate', 'today');
+            $("#datepicker").datepicker({
+
+                format: 'yyyy-mm-dd'
+
+            });
+            
+
+            $('#DisID').on('change', function () {
+                $('#ThaID').val("");
+                var DistricttId = $('#DisID option:selected').val();
+                //  alert(departmentId);
+                // Console.log(memebershipId);
+                //course
+                $.ajax({
+                    type: 'GET',
+                    data: { Id: DistricttId },
+                    url: '@Url.Action("SelectedDistrict", "Employee")',
+                    success: function (result) {
+                        courses = result;
+                        // console.log(courses);
+                        var a = '<option value="">--Select--</option>';
+                        if (DistricttId == null) {
+                            $('#ThaID').html(a);
+                        } else {
+                            a = '<option value="">--Select--</option>';
+
+                            for (var i = 0; i < result.length; i++) {
+                                a += '<option value="' + result[i].ThaID + '">' + result[i].Name + '</option>';
+
+                            }
+                            $('#ThaID').html(a);
+
+                        }
+
+                    }
+                });
+                //teacher
+
+            });
+
+            //$("#District").autocomplete({
+            //    source: function (request, response) {
+            //        $.ajax({
+            //            url: "/Employee/GetDistrict",
+            //            type: "POST",
+            //            dataType: "json",
+            //            data: { Prefix: request.term },
+            //            success: function (data) {
+            //                response($.map(data, function (item) {
+            //                    return { label: item.Name, value: item.Name };
+            //                }))
+
+            //            }
+            //        })
+            //    },
+            //    messages: {
+            //        noResults: "",
+            //        results: function (count) {
+            //            return count + (count > 1 ? ' results' : ' result ') + ' found';
+            //        }
+            //    }
+            //});
+
+            //$("#Thana").autocomplete({
+            //    source: function (request, response) {
+            //        $.ajax({
+            //            url: "/Employee/GetThana",
+            //            type: "POST",
+            //            dataType: "json",
+            //            data: { Prefix: request.term },
+            //            success: function (data) {
+            //                response($.map(data, function (item) {
+            //                    return { label: item.Name, value: item.Name };
+            //                }))
+
+            //            }
+            //        })
+            //    },
+            //    messages: {
+            //        noResults: "",
+            //        results: function (count) {
+            //            return count + (count > 1 ? ' results' : ' result ') + ' found';
+            //        }
+            //    }
+            //});
+
+           
+
+            //$("#Save").on("click", function () {
+            //    // creditToBeTaken = 100;
+            //    $("#BusSchedule").submit();
+            //});
+
+        });
+
+    </script>
+}

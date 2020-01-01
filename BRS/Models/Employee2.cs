@@ -19,6 +19,8 @@ namespace BRS.Models
         public Nullable<int> RecID { get; set; }
         [Required]
         [Display(Name="Employee ID")]
+        [MinLength(3, ErrorMessage = "Employee ID Minimum length 3 digit")]
+
         public string EmpID { get; set; }
         [Display(Name = "Employee Name")]
         [Required]
@@ -40,12 +42,16 @@ namespace BRS.Models
         [Display(Name = "Date of Bairth")]
         public DateTime DOB { get; set; }
         [Display(Name = "Contact Number 1")]
+        [MaxLength(11, ErrorMessage = "Contact number Minimum length 11 digit")]
+
         public string ConNum1 { get; set; }
         [Display(Name = "Contact Number 2")]
+        [MaxLength(11, ErrorMessage = "Contact number Maximum length 11 digit")]
         public string ConNum2 { get; set; }
         [Display(Name = "NID")]
+        [MinLength(8, ErrorMessage = "NID Minimum length 8 digit")]
         public string ENID { get; set; }
-        [Display(Name = "Position ID")]
+        [Display(Name = "Position")]
         public int PosID { get; set; }
         public int PID { get; set; }
         [Display(Name = "Joining Date")]

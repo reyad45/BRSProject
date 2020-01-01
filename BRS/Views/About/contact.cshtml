@@ -111,6 +111,16 @@
                                 <ul class="main_nav_list">
                                     <li class="main_nav_item">@Html.ActionLink("Home", "index", "Home")</li>
                                     <li class="main_nav_item">@Html.ActionLink("About", "index", "About")</li>
+                                    @if (Session["username"] != null || (string)(Session["username"]) != "")
+                                    {
+                                        int UserRole = Convert.ToInt16(Session["UserRole"]);
+                                        if (UserRole == 1)
+                                        {
+                                            <li class="main_nav_item">@Html.ActionLink("Employee Add", "Save", "Employee")</li>
+                                            <li class="main_nav_item">@Html.ActionLink("Search Schedule", "SearchShedule", "businfo")</li>
+                                        }
+                                    }
+
 
 
                                     <li class="main_nav_item dropdown ">
@@ -175,17 +185,16 @@
 
         </header>
 
-
         <div class="menu trans_500">
             <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
                 <div class="menu_close_container"><div class="menu_close"></div></div>
                 <div class="logo menu_logo"><a href="#"><img src="~/images/logo.png" alt=""></a></div>
                 <ul>
-                    <li class="menu_item"><a href="#">home</a></li>
-                    <li class="menu_item"><a href="#">about us</a></li>
-                    <li class="menu_item"><a href="#">offers</a></li>
-                    <li class="menu_item"><a href="#">news</a></li>
-                    <li class="menu_item"><a href="#">contact</a></li>
+                    <li class="menu_item">@Html.ActionLink("Home", "index", "Home")</li>
+                    <li class="menu_item">@Html.ActionLink("About", "index", "About")</li>
+                    <li class="menu_item">@Html.ActionLink("Contact", "contact", "About")</li>
+
+                    <li onclick="document.getElementById('id01').style.display='block'" class="menu_item" style="width: auto;">Login</li>
                 </ul>
             </div>
         </div>

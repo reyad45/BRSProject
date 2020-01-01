@@ -72,7 +72,7 @@ namespace BRS.Models
         public DateTime Fdate { get; set; }
         [Display(Name="To")]
         public DateTime Tdate { get; set; }
-
+        [Display(Name = "Seat Price")]
         public int SetPrice { get; set; }
         public string entryBy { get; set; }
         public DateTime entryDate { get; set; }

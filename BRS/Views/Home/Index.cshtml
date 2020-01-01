@@ -129,11 +129,19 @@
                                 <ul class="main_nav_list">
                                     <li class="main_nav_item">@Html.ActionLink("Home", "index", "Home")</li>
                                     <li class="main_nav_item">@Html.ActionLink("About", "index", "About")</li>
-                                    <li class="main_nav_item">@Html.ActionLink("Employee Add", "Save", "Employee")</li>
+                                        @if (Session["username"] != null || (string) (Session["username"]) != "")
+                                        {
+                                            int UserRole = Convert.ToInt16(Session["UserRole"]);
+                                            if (UserRole == 1)
+                                            {
+                                                <li class="main_nav_item">@Html.ActionLink("Employee Add", "Save", "Employee")</li>
+                                                <li class="main_nav_item">@Html.ActionLink("Search Schedule", "SearchShedule", "businfo")</li>
+                                            }
+                                        }
 
-                
-                                    
-                                    <li class="main_nav_item dropdown ">
+
+
+                                                <li class="main_nav_item dropdown ">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Bus Info
                                         </a>

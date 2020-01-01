@@ -1,4 +1,5 @@
-﻿@model BRS.Models.Employee2
+﻿@using BRS.Controllers
+@model BRS.Models.Employee2
 
 @{
     ViewBag.Title = "Save";
@@ -168,7 +169,10 @@
     }
 
 <div>
-    @Html.ActionLink("Back to List", "Save")
+   
+    @Html.ActionLink("Back To Home Page", "Index", "Home")
+    <a href='javascript:history.go(-1)'>Go Back to Previous Page</a>
+   
 </div>
 @Scripts.Render("~/bundles/bootstrap")
 

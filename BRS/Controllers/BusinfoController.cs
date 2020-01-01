@@ -13,6 +13,33 @@ namespace BRS.Controllers
 		BusinfoBLL businfoBll = new BusinfoBLL(); 
 		//
 		// GET: /Businfo/
+       
+	    public ActionResult SearchShedule()
+
+	    {
+            ViewBag.BusNames = businfoBll.GetBusName();
+	        return View();
+	    }
+   
+
+        public ActionResult SearchShedulebus(DateTime  jdate)
+        {
+            List<BusInfo> GetShedule = businfoBll.GetBusShedule(jdate);
+
+            var date = jdate.ToString("MM/dd/yyyy");
+            ViewBag.jdate = date;
+
+            return Json(GetShedule,JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SearchShedulebusid(int id)
+        {
+            List<BusInfo> GetSheduleID = businfoBll.GetBusSheduleID();
+            var Schedule = GetSheduleID.FindAll(a => a.BusNameId == id).ToList();
+            return Json(Schedule, JsonRequestBehavior.AllowGet);
+        }
+
+
 		[HttpGet]
 		public ActionResult Create() 
 		{

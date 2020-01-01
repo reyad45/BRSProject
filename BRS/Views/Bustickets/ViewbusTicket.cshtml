@@ -4,15 +4,19 @@
 @model List<BRS.Models.BusInfo>
 @{
     ViewBag.Title = "ViewbusTicket";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+   Layout = "~/Views/Shared/_Layout.cshtml";
     
 
 }
-
+<link href="~/Content/brs.css" rel="stylesheet" />
 <link href="~/Content/Site.css" rel="stylesheet" />
 <link href="~/Content/data%20table.bootstrap.css" rel="stylesheet" />
-@*View All Bus Name*@><div class="login-form  center-block" style="margin-top:200px">
-                          <h3 class="text-center text-content" id="demoGrid"> View busTicket</h3>
+
+
+
+
+<div class="login-form  center-block" style="margin-top:200px">
+    <h3 class="text-center text-content" id="demoGrid"> View busTicket</h3>
     <h3 class="text-center text-contents "><strong>@ViewBag.sou To @ViewBag.des  Date: @ViewBag.jdate</strong></h3>
     <table class="table table-bordered table-striped table-bordered dt-responsive nowrap text-contents " id="dataTable">
         <thead>
@@ -32,6 +36,7 @@
                 {
                     <tr class="text-center">
                         <td>
+                            <span class="hidden" id="hiddenid">@data.busNo</span><br/>
                             <span class="text-info"> @data.busName </span><br />
                             <span>Bus Code :</span><span class="text-info">@data.busCode</span>  <br />
                             <span> Start Point :</span><span class="text-info"> @data.sourceStation </span><br />
@@ -42,36 +47,459 @@
                             <span> Arrival Time :</span><span class="text-info">@data.ETime</span>
                         </td>
                         <td style="padding-top:30px">@data.availSeat</td>
-                        <td style ="padding-top: 30px;">@data.SetPrice</td>
-                        <td style="padding-top:20px"><button type="submit" class="btn btn-info">View Seats</button></td>
+                        <td style="padding-top: 30px;">@data.SetPrice</td>
+                        <td style="padding-top:20px"> <input onclick="showHideDiv('seatInformation')" type="button" value="ShowSeat" id="myButton1" class="btn btn-success"></input>
+                            
+                        </td>
 
+                       
 
+                      
                     </tr>
                 }
+
             }
         </tbody>
     </table>
+
+    <hr />
+    <div class="container" id="seatInformation">
+        <div class="">
+            <div class="">
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="seat-list">
+                            <li>
+                                <span class="seat booked">
+
+                                    <div class="hand"></div>
+                                </span>
+                                <span>Booked (M)</span>
+                            </li>
+                            <li>
+                                <span class="seat booked-female">
+                                    <div class="hand"></div>
+                                </span>
+                                <span>Booked (F)</span>
+                            </li>
+                            <li>
+                                <span class="seat blocked">
+                                    <div class="hand"></div>
+                                </span>
+                                <span>Blocked</span>
+                            </li>
+                            <li>
+                                <span class="seat available">
+                                    <div class="hand"></div>
+                                </span>
+                                <span>Available</span>
+                            </li>
+                            <li>
+                                <span class="seat selected">
+                                    <div class="hand"></div>
+                                </span>
+                                <span>Selected</span>
+                            </li>
+                            <li>
+                                <span class="seat sold">
+                                    <div class="hand"></div>
+                                </span>
+                                <span>Sold (M)</span>
+                            </li>
+                            <li>
+                                <span class="seat sold-female">
+                                    <div class="hand"></div>
+                                </span>
+                                <span>Sold (F)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="seat-selction d-flex">
+                            <div class="bus">
+                                <div class="driver">
+                                    <img src="../images/driver-logo.png">
+                                </div>
+                                <hr>
+                                <div class="seats">
+                                    <ul>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="seat available">
+                                                <div class="hand"></div>
+                                            </span>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                            <div class="seat-info">
+                                <label for="board">Boarding Point <span class="mandatory">*</span></label>
+
+                                <div class="ant-select-lg wide select ant-select-enabled" style="padding-right: 10px; display: block;">
+                                    <div class="ant-select-selection
+								           								 ant-select-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="0">
+                                        <div class="ant-select-selection__rendered">
+                                            <div unselectable="on" class="ant-select-selection__placeholder" style="display: block; user-select: none;">
+                                                Options
+                                            </div>
+                                        </div>
+                                        <span class="ant-select-arrow" unselectable="on" style="user-select: none;"><b></b></span>
+                                    </div>
+                                </div>
+                                <label for="Drop">
+                                    Droping Point <span class="mandatory">*</span>
+                                </label>
+                                <div class="ant-select-arrow">
+                                    <input type="text" name="">
+                                </div>
+                                <br>
+                                <hr>
+                                <h6>Seat Information</h6>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Seat</th>
+                                            <th>Class</th>
+                                            <th>Fare</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <div class="total">
+                                    <p>
+                                        Sub Total: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="subTotal">0 &nbsp;  &nbsp;</span>&nbsp;৳
+                                    </p> <hr>
+                                    <p>
+                                        Service Charge: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <span id="Stotal">0 &nbsp;  &nbsp;</span>&nbsp;৳
+                                    </p> <hr>
+                                    <p>
+                                        Grand Total: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<span id="myspan">0 &nbsp;  &nbsp;</span>&nbsp;৳
+                                    </p> <hr>
+                                    <p id="clickme">Click me: 0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="body-overlay"></div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 </div>
 
-@Scripts.Render("~/bundles/bootstrap")
+    <!------------------------------To-do list---------------------->
+    <!------------------------------To-do list---------------------->
+    @Scripts.Render("~/bundles/bootstrap")
 
 
 
-@Scripts.Render("~/bundles/jquery")
-@section scripts
-{
+    @Scripts.Render("~/bundles/jquery")
+    @section scripts
+    {
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
 
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-
-    <script src="~/Scripts/jquery.dataTables.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#dataTable').DataTable({
-
-                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-                "pagingType": "full_numbers"
+        <script src="~/Scripts/jquery.dataTables.min.js"></script>
+        <script>
+            // Data Table
+            $(document).ready(function() {
+                $('#dataTable').DataTable({
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                    "pagingType": "full_numbers"
+                });
             });
-        });
 
-    </script>
-}
+            //Hide and Show Seat
+            
+
+            function showHideDiv(ele) {
+                var srcElement = document.getElementById(ele);
+                if (srcElement != null) {
+                    if (srcElement.style.display == "block") {
+                        srcElement.style.display = 'none';
+                        $("#myButton1").val("Hide Seat");
+                    }
+                    else {
+                        srcElement.style.display = 'block';
+                    }
+                    return false;
+                }
+            }
+
+
+            //$(document).ready(function() {
+            //    $("#seatInformation").hide();
+                
+            //    $("#myButton1").click(function () {
+            //        if($(this).values ==('ShowSeat')){
+            //            $("#seatInformation").show();
+
+            //            $("#myButton1").val("Hide Seat");
+            //        } else {
+            //            $("#seatInformation").hide();
+
+            //            $("#myButton1").val("Hide");
+            //        }
+                   
+                    
+
+            //    });
+            //});
+            //////Show and Hide Button
+
+
+
+            //Click Seat and Add Value
+
+            var theTotal = 0;
+            var SarviceChage = 0;
+            var count = 0;
+
+            $('.seats .available').click(function() {
+                if ($(this).hasClass('selected')) {
+                    console.log('clicked');
+                    $(this).removeClass('selected');
+
+                    count = Number(count) - 1;
+                    document.getElementById("clickme").textContent = count;
+                    theTotal = Number(theTotal) - 480;
+                    SarviceChage = number(SarviceChage) - 30;
+
+                    if (count == 0) {
+                        document.getElementById("subTotal").textContent = 0;
+                        document.getElementById("Stotal").textContent = 0;
+                        document.getElementById("myspan").textContent = 0;
+                    } else {
+                        document.getElementById("subTotal").textContent = theTotal;
+                        document.getElementById("Stotal").textContent = SarviceChage;
+                        document.getElementById("myspan").textContent = theTotal + SarviceChage;
+                    }
+
+                } else {
+                    theTotal = Number(theTotal) + 480;
+                    SarviceChage = Number(SarviceChage) + 30;
+
+                    if (count < 4) {
+                        $(this).addClass('selected');
+                        count = Number(count) + 1;
+                        $('#tussenstand').val("Total:" + theTotal);
+                        document.getElementById("subTotal").textContent = theTotal;
+                        document.getElementById("Stotal").textContent = SarviceChage;
+                        document.getElementById("myspan").textContent = theTotal + SarviceChage;
+
+                        document.getElementById("clickme").textContent = count;
+                    } else {
+                        window.alert("Maximum Seat limit is 4 per Booking");
+                    }
+                }
+
+
+            });
+        </script>
+    }

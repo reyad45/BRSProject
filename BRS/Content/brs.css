@@ -1,0 +1,449 @@
+
+
+
+
+/* /filter */
+.seat {
+  position: relative;
+  width: 25px;
+  height: 28px;
+  background: #fff;
+  border: 1px solid #c1c1c1;
+  display: inline-block; }
+  .seat::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 5px;
+    border: 1px solid #c1c1c1;
+    background: #fff;
+    bottom: 3px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%); }
+  .seat::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 3px;
+    background: #fff;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%); }
+  .seat .hand {
+    position: absolute;
+    width: 18px;
+    height: 3px;
+    left: 2px;
+    top: 23px;
+    background: #fff; }
+    .seat .hand::before {
+      position: absolute;
+      content: '';
+      width: 6px;
+      height: 15px;
+      background: #fff;
+      border: 1px solid #c1c1c1;
+      right: -6px;
+      bottom: -1px; }
+    .seat .hand::after {
+      position: absolute;
+      content: '';
+      width: 6px;
+      height: 15px;
+      background: #fff;
+      border: 1px solid #c1c1c1;
+      left: -5px;
+      bottom: -1px; }
+  .seat.available {
+    border-color: #d5d3d7;
+    background: #fff; }
+    .seat.available::before {
+      border-color: #d5d3d7;
+      background: #fff; }
+    .seat.available::after {
+      background: #fff; }
+    .seat.available .hand {
+      background: #fff; }
+      .seat.available .hand::before, .seat.available .hand::after {
+        border-color: #d5d3d7;
+        background: #fff; }
+  .seat.booked {
+    border-color: #ff4646;
+    background: #ff9090; }
+    .seat.booked::before {
+      border-color: #ff4646;
+      background: #ff9090; }
+    .seat.booked::after {
+      background: #ff9090; }
+    .seat.booked .hand {
+      background: #ff9090; }
+      .seat.booked .hand::before, .seat.booked .hand::after {
+        border-color: #ff4646;
+        background: #ff9090; }
+  .seat.countered {
+    border-color: #74489d;
+    background: #c7a6e6; }
+    .seat.countered::before {
+      border-color: #74489d;
+      background: #c7a6e6; }
+    .seat.countered::after {
+      background: #c7a6e6; }
+    .seat.countered .hand {
+      background: #c7a6e6; }
+      .seat.countered .hand::before, .seat.countered .hand::after {
+        border-color: #74489d;
+        background: #c7a6e6; }
+  .seat.selected {
+    border-color: #72bf44;
+    background: #9cd27c; }
+    .seat.selected::before {
+      border-color: #72bf44;
+      background: #9cd27c; }
+    .seat.selected::after {
+      background: #9cd27c; }
+    .seat.selected .hand {
+      background: #9cd27c; }
+      .seat.selected .hand::before, .seat.selected .hand::after {
+        border-color: #72bf44;
+        background: #9cd27c; }
+  .seat.booked {
+    border-color: #74489d;
+    background: #c7a6e6; }
+    .seat.booked::before {
+      border-color: #74489d;
+      background: #c7a6e6; }
+    .seat.booked::after {
+      background: #c7a6e6; }
+    .seat.booked .hand {
+      background: #c7a6e6; }
+      .seat.booked .hand::before, .seat.booked .hand::after {
+        border-color: #74489d;
+        background: #c7a6e6; }
+  .seat.blocked {
+    border-color: #000;
+    background: #A9A9A9; }
+    .seat.blocked::before {
+      border-color: #000;
+      background: #A9A9A9; }
+    .seat.blocked::after {
+      background: #A9A9A9; }
+    .seat.blocked .hand {
+      background: #A9A9A9; }
+      .seat.blocked .hand::before, .seat.blocked .hand::after {
+        border-color: #000;
+        background: #A9A9A9; }
+  .seat.selected {
+    border-color: #72bf44;
+    background: #9cd27c; }
+    .seat.selected::before {
+      border-color: #72bf44;
+      background: #9cd27c; }
+    .seat.selected::after {
+      background: #9cd27c; }
+    .seat.selected .hand {
+      background: #9cd27c; }
+      .seat.selected .hand::before, .seat.selected .hand::after {
+        border-color: #72bf44;
+        background: #9cd27c; }
+  .seat.selecting {
+    -webkit-animation-name: example;
+            animation-name: example;
+    -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+            animation-direction: alternate; }
+    .seat.selecting::before {
+      -webkit-animation-name: example;
+              animation-name: example;
+      -webkit-animation-duration: 1s;
+              animation-duration: 1s;
+      -webkit-animation-iteration-count: infinite;
+              animation-iteration-count: infinite;
+      -webkit-animation-direction: alternate;
+              animation-direction: alternate; }
+    .seat.selecting::after {
+      -webkit-animation-name: example;
+              animation-name: example;
+      -webkit-animation-duration: 1s;
+              animation-duration: 1s;
+      -webkit-animation-iteration-count: infinite;
+              animation-iteration-count: infinite;
+      -webkit-animation-direction: alternate;
+              animation-direction: alternate; }
+    .seat.selecting .hand {
+      -webkit-animation-name: example;
+              animation-name: example;
+      -webkit-animation-duration: 1s;
+              animation-duration: 1s;
+      -webkit-animation-iteration-count: infinite;
+              animation-iteration-count: infinite;
+      -webkit-animation-direction: alternate;
+              animation-direction: alternate; }
+      .seat.selecting .hand::before, .seat.selecting .hand::after {
+        -webkit-animation-name: example;
+                animation-name: example;
+        -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+        -webkit-animation-iteration-count: infinite;
+                animation-iteration-count: infinite;
+        -webkit-animation-direction: alternate;
+                animation-direction: alternate; }
+
+@-webkit-keyframes example {
+  from {
+    background-color: white; }
+  to {
+    background-color: darkgray; } }
+  .seat.sold-female {
+    border-color: #ff1493;
+    background: #ff99cc; }
+    .seat.sold-female::before {
+      border-color: #ff1493;
+      background: #ff99cc; }
+    .seat.sold-female::after {
+      background: #ff99cc; }
+    .seat.sold-female .hand {
+      background: #ff99cc; }
+      .seat.sold-female .hand::before, .seat.sold-female .hand::after {
+        border-color: #ff1493;
+        background: #ff99cc; }
+  .seat.sold {
+    border-color: #ff4646;
+    background: #ff9090; }
+    .seat.sold::before {
+      border-color: #ff4646;
+      background: #ff9090; }
+    .seat.sold::after {
+      background: #ff9090; }
+    .seat.sold .hand {
+      background: #ff9090; }
+      .seat.sold .hand::before, .seat.sold .hand::after {
+        border-color: #ff4646;
+        background: #ff9090; }
+  .seat.booked-female {
+    border-color: #a055c2;
+    background: #F04DF0; }
+    .seat.booked-female::before {
+      border-color: #a055c2;
+      background: #F04DF0; }
+    .seat.booked-female::after {
+      background: #F04DF0; }
+    .seat.booked-female .hand {
+      background: #F04DF0; }
+      .seat.booked-female .hand::before, .seat.booked-female .hand::after {
+        border-color: #a055c2;
+        background: #F04DF0; }
+
+ul.seat-list {
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 20px;
+  -ms-flex-pack: center;
+      justify-content: center;
+  text-align: center; }
+  ul.seat-list li {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: center;
+        align-items: center; }
+    ul.seat-list li span {
+      text-transform: capitalize;
+      color: #8a6caf;
+      font-size: 9px;
+      line-height: 28px;
+      display: block;
+      margin-top: 10px; }
+    ul.seat-list li:not(:last-child) {
+      margin-right: 5px; }
+  ul.seat-list .seat {
+    -webkit-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+            transform: scale(0.8); }
+
+.bus {
+  padding: 15px 10px;
+  border:1px solid  #d5d3d7; }
+  .bus .driver {
+    text-align: right;
+    margin-bottom: 35px; }
+    .bus .driver img {
+      height: 80px;
+      width: 80px;
+      margin-right: 40px; }
+  .bus .seats {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    margin-bottom: 10px; }
+    .bus .seats .seat {
+      -webkit-transform: scale(1);
+          -ms-transform: scale(1);
+              transform: scale(1); }
+    .bus .seats ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0; }
+      .bus .seats ul:not(:last-child) {
+        margin-right: 5px; }
+      .bus .seats ul li {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        cursor: pointer; }
+        .bus .seats ul li:not(:last-child) {
+          margin-bottom: 20px; }
+.seat-info{
+  margin-left: 30px !important;
+}
+.seat-info h6 {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #72bf44;
+  margin-bottom: 25px; }
+
+.seat-info .table th,
+.seat-info .table td {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8a6caf;
+  border: none; }
+
+.seat-info .table thead {
+  border-width: 1px 0;
+  border-style: dashed;
+  border-color: #d5d3d7; }
+
+.seat-info .table tbody {
+  border-bottom: 1px dashed #d5d3d7; }
+  .seat-info .table tbody tr:not(:last-child) {
+    border-bottom: 1px solid #d5d3d7; }
+
+.seat-info .total p {
+  margin-bottom: 0;
+  display: -ms-flexbox;
+  display: flex; 
+}
+  .seat-info .total p span {
+    font-size: 12px;
+    font-weight: 600;
+    color: #8a6caf;
+    display: inline-block; }
+    .seat-info .total p span::first-child {
+      -ms-flex-preferred-size: 67%;
+          flex-basis: 67%;
+      padding-left: 0.75rem; }
+
+.booking-list {
+  overflow: auto;
+  white-space: nowrap; }
+  .booking-list li {
+    font-weight: 700;
+    color: #2d2436; }
+    .booking-list li:not(:first-child) {
+      position: relative;
+      padding-left: 20px !important; }
+      .booking-list li:not(:first-child)::before {
+        position: absolute;
+        content: "";
+        height: 10px;
+        width: 10px;
+        background: #000;
+        border-radius: 50%;
+        left: 5px;
+        top: 5px; }
+    .booking-list li.active-ticket::before {
+      background: #72bf44; }
+    .booking-list li.canceled-ticket::before {
+      background: #ff5656; }
+    .booking-list li.expired-ticket::before {
+      background: #8c33e1; }
+    .booking-list li.active {
+      border: 1px solid #d5d3d7;
+      border-radius: 5px;
+      padding: 5px 10px; }
+      .booking-list li.active::before {
+        top: 10px; }
+
+.ticket {
+  border: 0;
+  margin-bottom: 10px;
+  border-radius: 5px !important;
+  background: #fff;
+  -webkit-box-shadow: 0px 21px 39.1px 6.9px rgba(81, 47, 113, 0.05);
+          box-shadow: 0px 21px 39.1px 6.9px rgba(81, 47, 113, 0.05); }
+  .ticket .ticket-header {
+    border: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    padding: 10px 10px 5px;
+    border-radius: 5px 5px 0 0; }
+  .ticket .ticket-body {
+    padding: 10px; }
+  .ticket.Canceled .ticket-header {
+    background: #ff5656; }
+  .ticket.Paid .ticket-header {
+    background: #72bf44; }
+  .ticket.Reissued .ticket-header {
+    background: #ff5656; }
+  .ticket.booked .ticket-header {
+    background: #5B2192; }
+  .ticket.INVOICECREATED .ticket-header {
+    background: #5B2192; }
+  .ticket.ORDERCREATED .ticket-header {
+    background: #5B2192; }
+  .ticket.COMPLETED .ticket-header {
+    background: #72bf44; }
+  .ticket.Expired {
+    position: relative;
+    opacity: .5; }
+    .ticket.Expired::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: "";
+      height: 100%;
+      width: 100%;
+      background: rgba(143, 143, 143, 0.1); }
+    .ticket.Expired .ticket-header {
+      background: #8f8f8f; }
+
+.booking {
+  padding: 170px 0 100px; }
+  .booking-filter {
+    margin-bottom: 20px; }
+    .booking-filter ul.color-list li {
+      padding-left: 21px;
+      font-size: 12px;
+      color: #8a6caf;
+      position: relative; }
+      .booking-filter ul.color-list li::before {
+        position: absolute;
+        content: '';
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border-width: 1px;
+        border-style: solid;
+        left: 0;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+                transform: translateY(-50%); }
+      .booking-filter ul.color-list li.active::before {
+        background-color: #72bf44;
+        border-color: #72bf44; }
+

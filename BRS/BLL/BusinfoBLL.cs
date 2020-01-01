@@ -47,6 +47,18 @@ namespace BRS.BLL
             return busGetway.GetBusName();
         }
 
+        public List<BusInfo> GetBusShedule(DateTime Fdate)
+        {
+            return busGetway.GetSehcdule(Fdate);
+
+        }
+
+        public List<BusInfo> GetBusSheduleID()
+        {
+            return busGetway.GetSehcduleID();
+
+        }
+
 
     }
 }

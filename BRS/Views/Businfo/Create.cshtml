@@ -108,6 +108,11 @@
                 @Html.LabelFor(a => a.description)
                 @Html.TextAreaFor(a => a.description, new { @class = "form-control", @placeholder = "Description" })
             </div>
+            <div class="col-md-6">
+                @Html.LabelFor(a=>a.SetPrice)
+                @Html.TextBoxFor(a => a.SetPrice, new { @class = "form-control", @placeholder = "Seat price" })
+                @Html.ValidationMessageFor(a=>a.SetPrice)
+            </div>
 
         </div>
         <div class="row form-group">

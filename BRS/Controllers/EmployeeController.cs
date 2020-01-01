@@ -49,6 +49,14 @@ namespace BRS.Controllers
             return Json(ThanaName, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult SelectedDistrictid(int id)
+        {
+            List<BusInfo> GetSheduleID = businfoBll.GetBusSheduleID();
+            var Schedule = GetSheduleID.FindAll(a => a.BusNameId == id).ToList();
+            return Json(Schedule, JsonRequestBehavior.AllowGet);
+        }
+        BusinfoBLL businfoBll = new BusinfoBLL(); 
+    
         public JsonResult GetDistrict(string pregix)
         {
             DivEntities dbEntity = new DivEntities();

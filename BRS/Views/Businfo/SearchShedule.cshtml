@@ -1,0 +1,124 @@
+﻿@model BRS.Models.BusInfo
+@{
+    ViewBag.Title = "SearchShedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="login-form container center" style="margin-top:200px">
+        <h2 class="text-left ">Search Bus Shedule</h2>
+       
+        <hr />
+        <div class="form-group">
+            <div class="col-md-6 justify-content-lg-center">
+          
+                @Html.LabelFor(a => a.BusNameId)
+
+                @Html.DropDownListFor(a => a.BusNameId, new SelectList(ViewBag.BusNames, "Id", "BusName"), "---Select----", new { @class = "form-control" , id="BusNameID" })
+                @Html.ValidationMessageFor(a => a.BusNameId)
+            </div>
+
+        </div>
+        </div>
+        <h4>View Schedule</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center table-style">BusNo</th>
+                    <th class="text-center table-style">Bus Name</th>
+      
+                    <th class="text-center table-style">Source Station</th>
+                    <th class="text-center table-style">Destination Station</th>
+                    <th class="text-center table-style">From Date</th>
+                    <th class="text-center table-style">To Date</th>
+                    <th class="text-center table-style">Start Time</th>
+                    <th class="text-center table-style">End Time</th>
+                    <th class="text-center table-style">Available Seat</th>
+
+                </tr>
+            </thead>
+            <tbody id="Schedules"></tbody>
+        </table>
+
+    
+
+  
+
+
+@section scripts
+{
+
+    <script type="text/javascript">
+
+      $(document).ready(function () {
+        ////$('input.timepicker').timepicker({});
+        //$('#Returndate').hide();
+        //$('#rdates').change(function () {
+        //    var $this = $(this);
+        //    if ($this.is(':checked')) {
+        //        $('#Returndate').show();
+        //    } else {
+        //        $('#Returndate').hide();
+        //    }
+        //});
+
+        //var date = new Date();
+        //date.setDate(date.getDate());
+
+        //$('#datepicker').datepicker({
+        //    startDate: date
+        //});
+        //$('#Rdatepicker').datepicker({
+        //    startDate: date
+        //});
+        var BusID = 0;
+
+        $('#BusNameID').on('change', function () {
+
+            var bussId = $('#BusNameID option:selected').val();
+                //  alert(departmentId);
+                // Console.log(memebershipId);
+                //course
+                $.ajax({
+                    type: 'GET',
+                    data: { Id: bussId },
+
+                    url: '@Url.Action("SelectedDistrictid", "Employee")',
+
+                    success: function (result) {
+                        console.log(result);
+                        var a = '';
+                        if (BusID == null) {
+                            $('#CourseId').html(a);
+                        } else {
+
+                            for (var i = 0; i < result.length; i++) {
+                                a += '<tr> <td>' + result[i].BusNo + ' </td>' +
+                               '<td>' + result[i].BusName + ' </td>' +
+                                '<td>' + result[i].Source_Station + ' </td>' +
+                           '<td>' + result[i].destination_Station + ' </td>' +
+                                    '<td>' + result[i].FDate + ' </td>' +
+                                    '<td>' + result[i].ToDate + ' </td>' +
+                                    '<td>' + result[i].sTime + ' </td>' +
+                                    '<td>' + result[i].eTime + ' </td>' +
+                                    '<td>' + result[i].availSeat + ' </td>' +
+                                   ' </tr>';
+
+                            }
+                            $('#Schedules').html(a);
+
+                        }
+
+                    }
+                });
+                //teacher
+
+
+            });
+
+
+
+    });
+
+</script>
+}

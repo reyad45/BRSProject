@@ -615,6 +615,7 @@
     <Content Include="styles\bootstrap4\bootstrap.min.css" />
     <Content Include="styles\bootstrap4\bootstrap.min.js" />
     <Content Include="styles\bootstrap4\popper.js" />
+    <Content Include="Content\brs.css" />
     <Content Include="styles\contact_responsive.css" />
     <Content Include="styles\contact_styles.css" />
     <Content Include="styles\elements_responsive.css" />
@@ -663,6 +664,7 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\_myLayout.cshtml" />
     <Content Include="Views\Employee\Save.cshtml" />
+    <Content Include="Views\Businfo\SearchShedule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

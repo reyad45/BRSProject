@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace BRS.Models
 {
@@ -38,9 +39,15 @@ namespace BRS.Models
         public string Password { get; set; }
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
         [Display(Name="User Role")]
         public string userRole { get; set; }
+
+        public static IEnumerable<SelectListItem> GetGenderSelectItems()
+        {
+            yield return new SelectListItem { Text = "Passenger", Value = "2" };
+
+        }
     }
 }

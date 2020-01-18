@@ -29,8 +29,8 @@
       
                     <th class="text-center table-style">Source Station</th>
                     <th class="text-center table-style">Destination Station</th>
-                    <th class="text-center table-style">From Date</th>
-                    <th class="text-center table-style">To Date</th>
+                    @*<th class="text-center table-style">From Date</th>
+                    <th class="text-center table-style">To Date</th>*@
                     <th class="text-center table-style">Start Time</th>
                     <th class="text-center table-style">End Time</th>
                     <th class="text-center table-style">Available Seat</th>
@@ -51,26 +51,7 @@
     <script type="text/javascript">
 
       $(document).ready(function () {
-        ////$('input.timepicker').timepicker({});
-        //$('#Returndate').hide();
-        //$('#rdates').change(function () {
-        //    var $this = $(this);
-        //    if ($this.is(':checked')) {
-        //        $('#Returndate').show();
-        //    } else {
-        //        $('#Returndate').hide();
-        //    }
-        //});
-
-        //var date = new Date();
-        //date.setDate(date.getDate());
-
-        //$('#datepicker').datepicker({
-        //    startDate: date
-        //});
-        //$('#Rdatepicker').datepicker({
-        //    startDate: date
-        //});
+       
         var BusID = 0;
 
         $('#BusNameID').on('change', function () {
@@ -91,16 +72,17 @@
                         if (BusID == null) {
                             $('#CourseId').html(a);
                         } else {
+                             
 
                             for (var i = 0; i < result.length; i++) {
-                                a += '<tr> <td>' + result[i].BusNo + ' </td>' +
-                               '<td>' + result[i].BusName + ' </td>' +
-                                '<td>' + result[i].Source_Station + ' </td>' +
-                           '<td>' + result[i].destination_Station + ' </td>' +
-                                    '<td>' + result[i].FDate + ' </td>' +
-                                    '<td>' + result[i].ToDate + ' </td>' +
+                                a += '<tr> <td>' + result[i].busNo + ' </td>' +
+                               '<td>' + result[i].busName + ' </td>' +
+                                '<td>' + result[i].sourceStation + ' </td>' +
+                                '<td>' + result[i].desStation + ' </td>' +
+                                    //'<td>' + result[i].Fdate + ' </td>' +
+                                    //'<td>' + result[i].Tdate + ' </td>' +
                                     '<td>' + result[i].sTime + ' </td>' +
-                                    '<td>' + result[i].eTime + ' </td>' +
+                                    '<td>' + result[i].ETime + ' </td>' +
                                     '<td>' + result[i].availSeat + ' </td>' +
                                    ' </tr>';
 

@@ -55,6 +55,12 @@ namespace BRS.Controllers
             var Schedule = GetSheduleID.FindAll(a => a.BusNameId == id).ToList();
             return Json(Schedule, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult SelecteBusno(string id)
+        {
+            List<BusInfo> GetSheduleID = businfoBll.GetBusSheduleID();
+            var Schedule = GetSheduleID.FindAll(a => a.busNo == id).ToList();
+            return Json(Schedule, JsonRequestBehavior.AllowGet);
+        }
         BusinfoBLL businfoBll = new BusinfoBLL(); 
     
         public JsonResult GetDistrict(string pregix)

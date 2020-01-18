@@ -12,8 +12,15 @@
 <link href="~/Content/Site.css" rel="stylesheet" />
 <link href="~/Content/data%20table.bootstrap.css" rel="stylesheet" />
 
+<style>
+    #seatInformation {
+        display: none;
+    }
+    .mandatory{
+        color:red;
+    }
 
-
+</style>
 
 <div class="login-form  center-block" style="margin-top:200px">
     <h3 class="text-center text-content" id="demoGrid"> View busTicket</h3>
@@ -27,7 +34,8 @@
 
                 <th class="text-center table-style">  available seat</th>
                 <th class="text-center table-style ">Price</th>
-                <th></th>
+
+                <th class="text-center table-style "></th>
             </tr>
         </thead>
         <tbody>
@@ -36,7 +44,9 @@
                 {
                     <tr class="text-center">
                         <td>
-                            <span class="hidden" id="hiddenid">@data.busNo</span><br/>
+                            <br/>
+                            <!--<span id="hiddenid">@data.busNo</span>-->
+                            <input type="hidden" id="hiddenid" value="@data.busNo" />
                             <span class="text-info"> @data.busName </span><br />
                             <span>Bus Code :</span><span class="text-info">@data.busCode</span>  <br />
                             <span> Start Point :</span><span class="text-info"> @data.sourceStation </span><br />
@@ -48,7 +58,7 @@
                         </td>
                         <td style="padding-top:30px">@data.availSeat</td>
                         <td style="padding-top: 30px;">@data.SetPrice</td>
-                        <td style="padding-top:20px"> <input onclick="showHideDiv('seatInformation')" type="button" value="ShowSeat" id="myButton1" class="btn btn-success"></input>
+                        <td style="padding-top:20px"> <input type="button" value="ShowSeat" onclick='UpdateStatus(@data.busNo)' class="btn btn-success"></input>
                             
                         </td>
 
@@ -334,9 +344,7 @@
                                     <div class="ant-select-selection
 								           								 ant-select-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="0">
                                         <div class="ant-select-selection__rendered">
-                                            <div unselectable="on" class="ant-select-selection__placeholder" style="display: block; user-select: none;">
-                                                Options
-                                            </div>
+                                       <input type="text" />
                                         </div>
                                         <span class="ant-select-arrow" unselectable="on" style="user-select: none;"><b></b></span>
                                     </div>
@@ -345,8 +353,7 @@
                                     Droping Point <span class="mandatory">*</span>
                                 </label>
                                 <div class="ant-select-arrow">
-                                    <input type="text" name="">
-                                </div>
+                                    <input type="text" name="" id="Destination" ><span id="Destination"></span></div>
                                 <br>
                                 <hr>
                                 <h6>Seat Information</h6>
@@ -373,13 +380,28 @@
                                         Grand Total: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         &nbsp;&nbsp;&nbsp;&nbsp;<span id="myspan">0 &nbsp;  &nbsp;</span>&nbsp;৳
                                     </p> <hr>
-                                    <p id="clickme">Click me: 0</p>
+                                    <p  id="clickme">Click me: 0</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="body-overlay"></div>
+                    <div class="body-overlay">
+                        <form >
+                            <div class="from-group row">
+                                <div class="col-md-6">
+                                    <label>YOUR MOBILE NUMBER</label>
+                                    <span class="mandatory">*</span>
+
+                                    <input type="text" required />
+                                </div>
+                                <div class="col-md-6" style="display:inline-block; margin-top:20px">
+                                    <input type="button" value="Verify" class="btn btn-success btn-block" style="width:50%" />
+                                </div>
+                            </div>
+                        </form>
+                        
+                    </div>
 
 
                 </div>
@@ -397,8 +419,6 @@
     <!------------------------------To-do list---------------------->
     @Scripts.Render("~/bundles/bootstrap")
 
-
-
     @Scripts.Render("~/bundles/jquery")
     @section scripts
     {
@@ -407,97 +427,138 @@
 
         <script src="~/Scripts/jquery.dataTables.min.js"></script>
         <script>
-            // Data Table
-            $(document).ready(function() {
-                $('#dataTable').DataTable({
-                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-                    "pagingType": "full_numbers"
+
+
+    // Data Table
+    $(document).ready(function () {
+        $('#dataTable').DataTable({
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pagingType": "full_numbers"
+        });
+    });
+
+    //Hide and Show Seat
+    //==================Button Click======================
+            @*var BusNoo = 0;
+            $('#Button1').click(function () {
+                $('#seatInformation').toggle();
+                BusNoo = $('#hiddenid').val();
+                console.log(BusNoo);
+                $.ajax({
+                    type: 'GET',
+                    data: { id: BusNoo },
+
+                    url: '@Url.Action("SelecteBusno", "Employee")',
+
+                    success: function (result) {
+                        console.log(result);
+
+                    }
                 });
-            });
 
-            //Hide and Show Seat
-            
 
-            function showHideDiv(ele) {
-                var srcElement = document.getElementById(ele);
-                if (srcElement != null) {
-                    if (srcElement.style.display == "block") {
-                        srcElement.style.display = 'none';
-                        $("#myButton1").val("Hide Seat");
-                    }
-                    else {
-                        srcElement.style.display = 'block';
-                    }
-                    return false;
+            });*@
+
+            var SeatPrice, ASeat, Destination;
+
+            var count = 0;
+            var theTotal = 0;
+            function UpdateStatus($var1) {
+                console.log("fired");
+                count = 0;
+                theTotal = 0;
+                if ($('.seats .available').hasClass('selected')) {
+                    console.log('clicked');
+                    
+                    $('.seats .available').removeClass('selected');
+                    document.getElementById("subTotal").textContent = 0;
+                    document.getElementById("Stotal").textContent = 0;
+                    document.getElementById("myspan").textContent = 0;
+                                     
+
                 }
+                //make an ajax call and get status value using the same 'id'
+                //  var var1 = document.getElementById('hiddenid').value;
+                var value = $var1;
+                $('#seatInformation').toggle();
+                console.log(value);
+                    $.ajax({
+                    type: 'GET',
+                    data: { Id: value },
+
+                    url: '@Url.Action("SelecteBusno", "Employee")',
+
+                    //  (or whatever your url is)
+
+
+                    //can send multipledata like {data1:var1,data2:var2,data3:var3
+                    //can use dataType:'text/html' or 'json' if response type expected
+                        success: function (responsedata) {
+                            console.log(responsedata);
+                            console.log(100);
+                            SeatPrice = 0;
+                            for (var i = 0; i < responsedata.length; i++) {
+                                var BusName = responsedata[i].busName;
+                                 SeatPrice = responsedata[i].SetPrice;
+                                 ASeat = responsedata[i].availSeat;
+                                 Destination = responsedata[i].desStation;
+                                 console.log(SeatPrice);
+                                 
+                            }
+                            
+                             // process on data
+                           // alert("got response as " + "'" + responsedata + "'")
+                    }
+                    })
+
+
             }
 
 
-            //$(document).ready(function() {
-            //    $("#seatInformation").hide();
-                
-            //    $("#myButton1").click(function () {
-            //        if($(this).values ==('ShowSeat')){
-            //            $("#seatInformation").show();
-
-            //            $("#myButton1").val("Hide Seat");
-            //        } else {
-            //            $("#seatInformation").hide();
-
-            //            $("#myButton1").val("Hide");
-            //        }
-                   
-                    
-
-            //    });
-            //});
-            //////Show and Hide Button
 
 
+            
+            
 
-            //Click Seat and Add Value
-
-            var theTotal = 0;
-            var SarviceChage = 0;
-            var count = 0;
-
-            $('.seats .available').click(function() {
+            $('.seats .available').click(function () {
                 if ($(this).hasClass('selected')) {
                     console.log('clicked');
                     $(this).removeClass('selected');
 
                     count = Number(count) - 1;
                     document.getElementById("clickme").textContent = count;
-                    theTotal = Number(theTotal) - 480;
-                    SarviceChage = number(SarviceChage) - 30;
-
+                    theTotal = Number(theTotal) - SeatPrice;
                     if (count == 0) {
                         document.getElementById("subTotal").textContent = 0;
                         document.getElementById("Stotal").textContent = 0;
                         document.getElementById("myspan").textContent = 0;
-                    } else {
+                    }
+                    else {
                         document.getElementById("subTotal").textContent = theTotal;
-                        document.getElementById("Stotal").textContent = SarviceChage;
-                        document.getElementById("myspan").textContent = theTotal + SarviceChage;
+                        document.getElementById("Stotal").textContent = 30;
+                        document.getElementById("myspan").textContent = theTotal + 30;
                     }
 
-                } else {
-                    theTotal = Number(theTotal) + 480;
-                    SarviceChage = Number(SarviceChage) + 30;
+                }
+                else {
+                    theTotal = Number(theTotal) + SeatPrice;
 
                     if (count < 4) {
                         $(this).addClass('selected');
                         count = Number(count) + 1;
                         $('#tussenstand').val("Total:" + theTotal);
                         document.getElementById("subTotal").textContent = theTotal;
-                        document.getElementById("Stotal").textContent = SarviceChage;
-                        document.getElementById("myspan").textContent = theTotal + SarviceChage;
+                        document.getElementById("Stotal").textContent = 30;
+                        document.getElementById("myspan").textContent = theTotal + 30;
+                        document.getElementById("Destination").textContent = Destination;
 
                         document.getElementById("clickme").textContent = count;
-                    } else {
+                    }
+                    else {
                         window.alert("Maximum Seat limit is 4 per Booking");
                     }
                 }
+
 
 
             });

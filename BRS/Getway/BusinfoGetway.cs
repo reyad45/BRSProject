@@ -218,6 +218,8 @@ namespace BRS.Getway
                 businfo.busCode = reader["BusCode"].ToString();
                 businfo.ETime = reader["eTime"].ToString();
                 businfo.sTime = reader["sTime"].ToString();
+                businfo.Fdate = Convert.ToDateTime(reader["FDate"].ToString());
+                businfo.Tdate = Convert.ToDateTime(reader["ToDate"].ToString());
                 businfo.sourceStation = reader["Source_Station"].ToString();
                 businfo.desStation = reader["destination_Station"].ToString();
                 businfo.availSeat = Convert.ToInt32(reader["availSeat"].ToString());
